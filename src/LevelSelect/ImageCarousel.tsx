@@ -12,11 +12,10 @@ function ImageCarousel() {
   };
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect} interval={null} indicators={false}>
+    <Carousel activeIndex={index} onSelect={handleSelect} interval={null} indicators={true}>
       <Carousel.Item>
         <img
             src={davila}
-            alt='alt'
         />
         <Carousel.Caption>
             CICS 160
