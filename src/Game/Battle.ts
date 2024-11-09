@@ -5,13 +5,14 @@ import Professor from "./Professor";
 import ProfessorTemplate from './ProfessorTemplate';
 import Action from "./Action";
 
-class Game {
+class Battle {
     private dialogue: Dialogue;
     private player: Player;
     private opponent: Player;
     private actionQueue: Array<Action> = [];
     private playerActiveProfessor: Professor|undefined;
     private opponentActiveProfessor: Professor|undefined;
+    private gameOver: number = 0; // 0 if game is still ongoing, 1 if player wins, -1 if opponent wins
 
     constructor(dialogue: Dialogue, playerTeam: ProfessorTemplate[], courseID: string) {
         this.dialogue = dialogue;
@@ -25,37 +26,32 @@ class Game {
             throw new Error(`Course with ID ${courseID} not found`);
         }
 
-        // get professors from course
+        // get opponent professors from course
         let professorsTemplates = course.getProfessors();
         let professors = professorsTemplates.map(professorTemplate => new Professor(professorTemplate));
         this.opponent = new Player(professors);
+        this.opponentActiveProfessor = this.opponent.getProfessors()[0];
 
-        // get professors from Player
+        // get player professors from Player
         let playerProfessorTemplates: ProfessorTemplate[] = playerTeam;
         let playerProfessors: Professor[] = playerProfessorTemplates.map(professorsTemplate => new Professor(professorsTemplate));
         this.player = new Player(playerProfessors);
-
-        // start battle by calling initBattle
+        this.playerActiveProfessor = this.player.getProfessors()[0];
     }
 
     public getPlayerProfessors() {
         return this.player.getProfessors();
     }
 
-    public getOpponentProfessors() {
+    public getOpponentProfessors(): Professor[] {
         return this.opponent.getProfessors();
     }
 
-    public getActiveProfessor() {
-        // I changed this for testing. You can change it back if you're working on it
-        //return this.playerActiveProfessor;
-
+    public getActiveProfessor(): Professor|undefined {
         return this.player.getProfessors()[0]
     }
 
-    public getOpponentActiveProfessor() {
-        //return this.opponentActiveProfessor;
-
+    public getOpponentActiveProfessor(): Professor|undefined {
         return this.opponent.getProfessors()[0]
     }
 
@@ -71,6 +67,20 @@ class Game {
         // UI checks for dialogue / UI changes
         // if there's moves left, UI calls update() again
 
+        // actionQueue assumed to be empty at the start of each Battle
+        
+        // add given player action to queue
+        this.actionQueue.push(action);
+
+        // add opponent action to queue
+        this.actionQueue.push({
+            isPlayer: false,
+            moveIndex: this.getRandomNumber(0, this.opponent.getProfessors()[0].getMoves().length - 1)
+        });
+
+        // randomly shuffle actionqueue
+        this.actionQueue.sort(() => Math.random() - 0.5);
+
         return this.updateState()
     }
 
@@ -83,30 +93,53 @@ class Game {
             let action = this.actionQueue.shift();
             if (action && action.isPlayer) {
                 // process player action ==> attack opponent active professor
-            } else {
+                if (this.playerActiveProfessor && this.opponentActiveProfessor) {
+                    this.playerActiveProfessor.attackOpponent(this.opponentActiveProfessor, this.playerActiveProfessor.getMoves()[action.moveIndex]);
+                }
+            } else if (action) {
                 // process opponent action ==> attack player active professor
+                if (this.playerActiveProfessor && this.opponentActiveProfessor) {
+                    this.opponentActiveProfessor.attackOpponent(this.playerActiveProfessor, this.opponentActiveProfessor.getMoves()[action.moveIndex]);
+                }
             }
+
+            this.gameOver = this.isGameOver();
 
             return true;
         }
 
+        this.gameOver = this.isGameOver();
+
         // no actions left
         return false
+
+        // UI should check for:
+        // - game over
+        // - dialogue
+        // - state of active professors (player and opponent)
     }
 
-    attack(receiver: Player, attacker: Player, move: string) {
-        // get attacker active professor
-        // get receiver active professor
-        // get move from attacker active professor
-        // calculate damage = power * attack * critical chance * random modifier
-        // apply damage to receiver active professor
+    isGameOver(): number {
+        // check if both player and opponent has professors left
+        // return 0 if both player and opponent has professors left
+        // return 1 if player wins ==> opponent has no professors left
+        // return -1 if opponent wins ==> player has no professors left
+
+        if (this.player.getProfessors().length == 0) {
+            return -1;
+        } else if (this.opponent.getProfessors().length == 0) {
+            return 1;
+        }
+
+        return 0;
     }
 
-    initBattle() {
-        // get player professors
-        // get opponent professors
-        // start battle
+    getRandomNumber(min: number, max: number): number {
+        /*
+        Returns a random number in the interval [min, max]
+        */
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 }
 
-export default Game;
+export default Battle;
