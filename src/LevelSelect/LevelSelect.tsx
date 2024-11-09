@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 import ImageCarousel from './ImageCarousel';
 import RetroButtonJSON from '../RetroButton/RetroButtonJSON';
 import './LevelSelect.css'
-import { getSerializedFromState, getStateFromSerialized } from '../GlobalState/GlobalState';
+import GlobalState, { getSerializedFromState, getStateFromSerialized } from '../GlobalState/GlobalState';
 
 function LevelSelect({globalState, setGlobalState}: any) {
+  // const [global, set] = useState<GlobalState>(globalState)
   const handleSaveJSON = () => {
     const data = getSerializedFromState(globalState);
     const blob = new Blob([JSON.stringify(data, null  , 2)], { type: 'application/json' });
@@ -19,42 +20,6 @@ function LevelSelect({globalState, setGlobalState}: any) {
     document.body.removeChild(link);
   };
 
-  // const [file, setFile] = useState<File | null>(null);
-  // const fileInputRef = useRef<HTMLInputElement | null>(null);
-
-  // const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.files) {
-  //     const selectedFile = e.target.files[0];
-  //     setFile(selectedFile);
-      
-  //     await handleUpload(selectedFile);
-  //   }
-  // };
-
-  // const handleUpload = async (fileToUpload: File) => {
-  //   if (fileToUpload) {
-  //     console.log('Uploading file...');
-
-  //     const formData = new FormData();
-  //     formData.append('file', fileToUpload);
-
-  //     try {
-  //       const result = await fetch('https://httpbin.org/post', {
-  //         method: 'POST',
-  //         body: formData,
-  //       });
-
-  //       const data = await result.json();
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  // };
-
-  // const handleButtonClick = () => {
-  //   fileInputRef.current?.click();
-  // };
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {

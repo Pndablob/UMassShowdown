@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import NameComponent from './NameComponent';
 import './ImageCarousel.css';
 import map from '../Game/Courses'
-import RetroButtonJSON from '../RetroButton/RetroButtonJSON';
+import RetroButton from '../RetroButton/RetroLink';
 
 function ImageCarousel({globalState, setGlobalState}: any) {
   const [index, setIndex] = useState(0);
@@ -14,11 +14,6 @@ function ImageCarousel({globalState, setGlobalState}: any) {
   const handleSelect = (selectedIndex: SetStateAction<number>) => {
     setIndex(selectedIndex);
   };
-
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate('/teamSelect', {state: {globalState, setGlobalState}});
-  }
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect} interval={null} indicators={false} className='custom-carousel' style={{
@@ -30,11 +25,9 @@ function ImageCarousel({globalState, setGlobalState}: any) {
         </Carousel.Item>
       ))}
       <div className="start-btn">
-          <RetroButtonJSON
-            onClick={levels.includes(Array.from(map.keys())[index]) ? handleClick : () => undefined}
-          >
+          <RetroButton to='/teamSelect' state={globalState} disabled={levels.includes(Array.from(map.keys())[index]) ? false : true}>
             {levels.includes(Array.from(map.keys())[index]) ? 'Start' : 'Not Unlocked'}
-          </RetroButtonJSON>
+          </RetroButton>
         </div>
     </Carousel>
   );
