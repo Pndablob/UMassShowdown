@@ -8,6 +8,7 @@ import Dialogue from '../Dialogue/Dialogue';
 import Player from '../Game/Player';
 import { Location, useLocation } from 'react-router-dom';
 import ProfessorTemplate from '../Game/ProfessorTemplate';
+import Professor from '../Game/Professor';
 
 interface BattleScreenArgs {
   globalState: GlobalState;
@@ -24,7 +25,6 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
   const state: BattleInitArgs = location.state;
   console.log(state);
 
-
   const dialogue = useRef(new Dialogue());
 
   const game = useRef(new Game(dialogue.current, state.professorsChosen, state.opponent));
@@ -33,10 +33,24 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
     <div className={styles['container']}>
       <div className={styles['battle-container']}>
         <div className={styles['left-professor']}>
-          {game.current.getActiveProfessor()!==undefined ? <ProfessorElement professor={game.current.getPlayerProfessors()[0]}/> : ""}
+          {game.current.getActiveProfessor()!==undefined ? <ProfessorElement professor={game.current.getActiveProfessor()}/> : ""}
+          <div className={styles['player-info-left']}>
+            { game.current.getPlayerProfessors().map((prof: Professor)=>{
+              return <div key={prof.getName()} className={styles['small-image-container']}>
+                <img alt={prof.getName()} src={prof.getPicture()} className={styles['small-image']}/>
+              </div>
+            })}
+          </div>
         </div>
         <div className={styles['right-professor']}>
-          {game.current.getPlayerProfessors.length!==0 ? <ProfessorElement professor={game.current.getPlayerProfessors()[0]}/> : ""}
+          <div className={styles['player-info-right']}>
+            { game.current.getOpponentProfessors().map((prof: Professor)=>{
+              return <div key={prof.getName()} className={styles['small-image-container']}>
+                <img alt={prof.getName()} src={prof.getPicture()} className={styles['small-image']}/>
+              </div>
+            })}
+          </div>
+          {game.current.getOpponentActiveProfessor()!==undefined ? <ProfessorElement professor={game.current.getOpponentActiveProfessor()}/> : ""}
         </div>
       </div>
       <div className={styles['message-container']}>

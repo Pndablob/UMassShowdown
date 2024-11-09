@@ -2,10 +2,16 @@
   height: 100vh;
   width: 100vw;
   text-align: center;
+  /*background-image: url("/public/dubois_pixelated.jpeg");*/
+  /*background-repeat:no-repeat;*/
+  /*background-size: cover;*/
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
 }
 
 .battle-container {
-  height: 85%;
+  height: 80%;
   display: flex;
   flex-direction: row;
 }
@@ -18,10 +24,6 @@
 .left-professor {
   width: 55%;
   height: 100%;
-  background-color: red;
-  border-width:5px;
-  border-color: gray;
-  border-style: solid;
   display: flex;
   flex-direction: column-reverse;
 }
@@ -29,20 +31,16 @@
 .right-professor {
   width: 45%;
   height: 100%;
-  background-color: red;
   border-width:5px;
-  border-color: gray;
-  border-style: solid;
-  display: flex;
-  flex-direction: column;
+  margin: 10px;
 }
 
 .professor-interior {
-  background-color: lightblue;
   width: 100%;
-  height: 80%;
+  /*height: 80%;*/
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .health-bar-container {
@@ -52,16 +50,47 @@
   border-width: 3px;
   border-style: solid;
   height: 30px;
+  margin: 0 auto;
 }
 
 .health-bar {
   background-color: green;
   height: 100%;
-  width: 80%;
 }
 
 .professor-image-container {
-  flex: 1;
+}
+
+.name{
+  margin: 0 auto;
+  font-family: PixeloidMono;
+  font-size: 1.3rem;
+}
+
+.player-info-left {
   background-color: black;
-  margin: 3rem;
+  width: 500px;
+  height: 100px;
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.player-info-right {
+  background-color: black;
+  width: 500px;
+  height: 100px;
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.small-image-container {
+  width: 70px;
+}
+
+.small-image {
+  width: 100%;
 }

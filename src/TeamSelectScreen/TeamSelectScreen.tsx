@@ -18,7 +18,7 @@ function TeamSelect({globalState, setGlobalState}: TeamSelectArgs) {
 
   const myTeam = useRef<ProfessorTemplate[]>([]);
   let battleInitState: BattleInitArgs = {
-    opponent: "110",
+    opponent: "160",
     professorsChosen: myTeam.current
   }
 
