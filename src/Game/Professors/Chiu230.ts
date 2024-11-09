@@ -1,9 +1,13 @@
-export default {
+import image from '../../Assets/Chiu.png';
+
+const prof = {
     name: "Joe Chiu",
     attack: 0,
     health: 0,
     maxHealth: 0,
     moves: [],
-    picture: "",
+    picture: image,
     id: 3,
 }
+
+export default prof;

@@ -1,9 +1,13 @@
-export default {
+import image from '../../Assets/Reilly.jpeg';
+
+const prof = {
     name: "Cole Reilly",
     attack: 0,
     health: 0,
     maxHealth: 0,
     moves: [],
-    picture: "",
+    picture: image,
     id: 12,
 }
+
+export default prof;

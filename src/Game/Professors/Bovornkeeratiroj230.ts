@@ -1,9 +1,13 @@
-export default {
+import image from "../../Assets/Bovornkeeratiroj.png";
+
+const prof = {
     name: "Nikko Bovornkeeratiroj",
     attack: 0,
     health: 0,
     maxHealth: 0,
     moves: [],
-    picture: "",
+    picture: image,
     id: 2,
 }
+
+export default prof;
