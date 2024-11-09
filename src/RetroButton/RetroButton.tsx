@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Button } from 'react-bootstrap';
-import './RetroButton.css'
+import styles from './RetroButton.module.css'
 
-function RetroButton({message, globalState, setGlobalState}: any) {
+interface RetroButtonArgs {
+  children: ReactNode;
+}
+
+function RetroButton({children}: RetroButtonArgs) {
   return (
-    <button>
-        {message}
+    <button className={styles['retro-button']}>
+        {children}
     </button>
   );
 }

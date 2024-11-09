@@ -9,8 +9,8 @@ class Game {
     private player: Player;
     private opponent: Player;
     private actionQueue: Array<Action> = [];
-    private playerActiveProfessor: Professor;
-    private opponentActiveProfessor: Professor;
+    private playerActiveProfessor: Professor|undefined;
+    private opponentActiveProfessor: Professor|undefined;
 
     constructor(dialogue: Dialogue, player: Player, courseID: string) {
         this.dialogue = dialogue;

@@ -8,9 +8,9 @@ function LevelSelect({globalState, setGlobalState}: any) {
     <div>
         <h1 className='level-select-title'>UMass Showdown</h1>
         <ImageCarousel/>
-        <RetroButton message='load' className='load-button'/>
+        <RetroButton>LOAD</RetroButton>
         <br/>
-        <RetroButton message='save' className='save-button'/>
+        <RetroButton>SAVE</RetroButton>
     </div>
   );
 }

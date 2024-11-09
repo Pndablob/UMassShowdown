@@ -9,7 +9,9 @@ import TeamSelect from '../TeamSelectScreen/TeamSelectScreen';
 import GlobalState from '../GlobalState/GlobalState';
 
 export default function Root() {
-  const [globalState, setGlobalState] = useState<GlobalState>();
+  const [globalState, setGlobalState] = useState<GlobalState>({
+
+  });
 
  const router = useMemo(() => {
   return createBrowserRouter([

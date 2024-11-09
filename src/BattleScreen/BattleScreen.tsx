@@ -9,7 +9,7 @@ import Player from '../Game/Player';
 
 interface BattleScreenArgs {
   globalState: GlobalState;
-  setGlobalState: Dispatch<SetStateAction<GlobalState | undefined>>;
+  setGlobalState: Dispatch<SetStateAction<GlobalState>>;
 }
 
 function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {

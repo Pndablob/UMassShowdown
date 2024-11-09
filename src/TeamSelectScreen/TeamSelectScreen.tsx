@@ -1,11 +1,10 @@
 import React from 'react';
+import RetroButton from '../RetroButton/RetroButton';
 
 function TeamSelect({globalState, setGlobalState}: any) {
   return (
     <div>
-      <header>
-        <h1>Team Select Screen</h1>
-      </header>
+      <RetroButton>Select Team</RetroButton>
     </div>
   );
 }
