@@ -2,8 +2,9 @@ import image from '../../Assets/Minea.jpeg';
 
 const prof = {
     name: "Marius Minea",
-    attack: 0,
-    maxHealth: 0,
+    attack: 90,
+    maxHealth: 311,
+    defense: 50,
     moves: [],
     picture: image,
     id: 10,

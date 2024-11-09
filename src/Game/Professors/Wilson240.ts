@@ -3,9 +3,9 @@ import Exam from "../Moves/Exam";
 
 const prof = {
     name: "Mark Wilson",
-    attack: 0,
-    maxHealth: 0,
-    defense: 90,
+    attack: 100,
+    maxHealth: 240,
+    defense: 70,
     moves: [Exam],
     picture: image,
     id: 15,

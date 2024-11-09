@@ -2,9 +2,9 @@ import image from '../../Assets/Davila.jpeg';
 
 const prof = {
     name: "Jaime Davila",
-    attack: 0,
-    health: 0,
-    maxHealth: 0,
+    attack: 70,
+    maxHealth: 160,
+    defense: 60,
     moves: [],
     picture: image,
     id: 4,

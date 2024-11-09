@@ -2,8 +2,9 @@ import image from '../../Assets/Parvini.jpeg';
 
 const prof = {
     name: "Ghazaleh Parvini",
-    attack: 0,
-    maxHealth: 0,
+    attack: 60,
+    maxHealth: 311,
+    defense: 80,
     moves: [],
     picture: image,
     id: 11,

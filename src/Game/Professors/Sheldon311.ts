@@ -2,8 +2,9 @@ import image from '../../Assets/Sheldon.jpeg';
 
 const prof = {
     name: "Daniel Sheldon",
-    attack: 0,
-    maxHealth: 0,
+    attack: 90,
+    maxHealth: 311,
+    defense: 80,
     moves: [],
     picture: image,
     id: 14,

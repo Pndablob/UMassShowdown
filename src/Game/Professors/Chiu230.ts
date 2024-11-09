@@ -2,9 +2,9 @@ import image from '../../Assets/Chiu.jpeg';
 
 const prof = {
     name: "Joe Chiu",
-    attack: 0,
-    health: 0,
-    maxHealth: 0,
+    attack: 90,
+    maxHealth: 230,
+    defense: 70,
     moves: [],
     picture: image,
     id: 3,

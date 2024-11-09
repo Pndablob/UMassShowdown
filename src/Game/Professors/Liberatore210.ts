@@ -2,8 +2,9 @@ import image from '../../Assets/Liberatore.jpeg';
 
 const prof = {
     name: "Marc Liberatore",
-    attack: 0,
-    maxHealth: 0,
+    attack: 60,
+    maxHealth: 210,
+    defense: 100,
     moves: [],
     picture: image,
     id: 8,
