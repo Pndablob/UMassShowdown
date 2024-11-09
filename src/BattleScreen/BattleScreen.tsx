@@ -34,14 +34,21 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
   const location: Location = useLocation();
   const state: BattleInitArgs = location.state;
 
+  const dialogue = useRef(new Dialogue());
+  const game = useRef(new Battle(dialogue.current, state.professorsChosen, state.opponent));
+
   const [mode, setMode] = useState<InfoBoxMode>(InfoBoxMode.MESSAGE);
 
-  const dialogue = useRef(new Dialogue());
   const [dialogueText, setDialogueText] = useState("");
   const [textRemaining, setTextRemaining] = useState(true);
   const [hasMovesLeft, setHasMovesLeft] = useState(false);
+  const [activeProf, setActiveProf] = useState(game.current.getActiveProfessor().copy());
+  const [oppProf, setOppProf] = useState(game.current.getOpponentActiveProfessor().copy());
 
-  console.log(location.state);
+  const updateScreen = () => {
+    setOppProf(game.current.getOpponentActiveProfessor().copy());
+    setActiveProf(game.current.getActiveProfessor().copy());
+  }
 
   const update = (hasMovesLeftTemp: boolean) => {
     let hasText = dialogue.current.hasText();
@@ -54,13 +61,7 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
       let isTextRemaining = dialogue.current.getText(setDialogueText);
       setTextRemaining(isTextRemaining);
     } else {
-      let copyActive = game.current.getActiveProfessor().copy();
-      let copyOppActive = game.current.getOpponentActiveProfessor().copy();
-      setActiveProf(copyActive);
-      setOppProf(copyOppActive);
-      console.log("copyActive", copyActive);
-      console.log("copyOppActive", copyOppActive);
-      console.log("update state here");
+      console.log(game.current);
     }
   }
 
@@ -82,16 +83,15 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
       if (event.key !== "Enter") return;
       if (mode === InfoBoxMode.MESSAGE) {
         if (textRemaining) {
-          console.log("textRemaining");
           let isTextRemaining = dialogue.current.getText(setDialogueText);
           setTextRemaining(isTextRemaining);
         } else {
-          console.log("not textRemaining");
-          console.log("hasMovesLeft", hasMovesLeft);
           if (hasMovesLeft) {
+            updateScreen();
             let hasMovesLeftTemp = game.current.gameLoop();
             update(hasMovesLeftTemp);
           } else {
+            updateScreen();
             setMode(InfoBoxMode.BATTLE1);
           }
         }
@@ -100,12 +100,8 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
     window.addEventListener('keypress', onEnter);
     return () => {window.removeEventListener('keypress', onEnter)};
-  }, [mode, textRemaining])
+  }, [mode, textRemaining, hasMovesLeft])
 
-  const game = useRef(new Battle(dialogue.current, state.professorsChosen, state.opponent));
-
-  const [activeProf, setActiveProf] = useState(game.current.getActiveProfessor());
-  const [oppProf, setOppProf] = useState(game.current.getOpponentActiveProfessor());
 
   return (
     <div className={styles['container']}>

@@ -3,8 +3,6 @@ import Professor from '../Game/Professor';
 
 export default function ProfessorElement({professor}: {professor: Professor}) {
   let health = professor.getHealth()/professor.getMaxHealth()*100;
-  console.log(professor);
-  console.log(professor.getHealth(), professor.getMaxHealth());
 
   return <div className={styles['professor-interior']}>
     <div>

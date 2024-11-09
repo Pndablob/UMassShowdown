@@ -76,7 +76,7 @@ class Professor {
     }
 
     public copy(): Professor {
-        return new Professor({
+        let prof = new Professor({
             name: this.name,
             attack: this.attack,
             maxHealth: this.maxHealth,
@@ -85,6 +85,8 @@ class Professor {
             picture: this.picture,
             id: -1,
         });
+        prof.health = this.health;
+        return prof;
     }
 }
 
