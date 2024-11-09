@@ -3,6 +3,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import davila from './assets/davila.jpg'
 import barrington from './assets/barrington.jpeg'
+import NameComponent from './NameComponent';
+import './ImageCarousel.css'
 
 function ImageCarousel() {
   const [index, setIndex] = useState(0);
@@ -12,11 +14,12 @@ function ImageCarousel() {
   };
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect} interval={null} indicators={true}>
+    <Carousel activeIndex={index} onSelect={handleSelect} interval={null} indicators={true} className='custom-carousel'>
       <Carousel.Item>
-        <img
+        <NameComponent name='CICS 110'/>
+        {/* <img
             src={davila}
-        />
+        /> */}
         <Carousel.Caption>
             CICS 160
         </Carousel.Caption>
