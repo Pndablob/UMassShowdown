@@ -3,9 +3,9 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-//import App from './App';
-//import Page2 from "./pages/Page2/Page2";
+import BattleScreen from '../BattleScreen/BattleScreen';
 import LevelSelect from '../LevelSelect/LevelSelect';
+import TeamSelect from '../TeamSelectScreen/TeamSelectScreen';
 
 interface GlobalState {
 }
@@ -18,6 +18,14 @@ export default function Root() {
     {
       path: "/",
       element: <LevelSelect globalState={globalState} setGlobalState={setGlobalState}/>,
+    },
+    {
+      path: "/battleScreen",
+      element: <BattleScreen globalState={globalState} setGlobalState={setGlobalState}/>,
+    },
+    {
+      path: "/teamSelect",
+      element: <TeamSelect globalState={globalState} setGlobalState={setGlobalState}/>,
     },
     ])
   }, [globalState, setGlobalState]);
