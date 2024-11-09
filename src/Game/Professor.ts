@@ -2,13 +2,16 @@ class Professor {
     private name: string;
     private id: number;
     private health: number;
-    private attack: number;
+    private moves: Array<Move>;
+    private picture: string;
 
-    constructor(name: string, id: number, health: number, attack: number) {
+
+    constructor(name: string, id: number, health: number, moves: Array<Move>, picture: string) {
         this.name = name;
         this.id = id;
         this.health = health;
-        this.attack = attack;
+        this.moves = moves;
+        this.picture = picture;
     }
     
     public getName(): string {
@@ -23,27 +26,35 @@ class Professor {
         return this.health;
     }
 
-    public getAttack(): number {
-        return this.attack;
+    public getMoves(): Array<Move> {
+        return this.moves;
     }
 
-    setHealth(health: number) {
+    public getPicture(): string {
+        return this.picture;
+    }
+
+    public setHealth(health: number) {
         this.health = health;
     }
 
-    setAttack(attack: number) {
-        this.attack = attack;
+    public setMove(moves: Array<Move>) {
+        this.moves = moves;
     }
 
-    setName(name: string) {
+    public setName(name: string) {
         this.name = name;
     }
 
-    setId(id: number) {
+    public setId(id: number) {
         this.id = id;
     }
 
-    takeDamage(damage: number) {
+    public setPicture(picture: string) {
+        this.picture = picture;
+    }
+
+    public takeDamage(damage: number) {
         this.health -= damage;
     }
 }
