@@ -2,9 +2,9 @@ import image from "../../Assets/Bovornkeeratiroj.jpeg";
 
 const prof = {
     name: "Nikko Bovornkeeratiroj",
-    attack: 0,
-    maxHealth: 0,
-    defense: 100,
+    attack: 60,
+    maxHealth: 300,
+    defense: 90,
     moves: [],
     picture: image,
     id: 2,
