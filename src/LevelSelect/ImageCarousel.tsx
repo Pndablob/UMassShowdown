@@ -29,11 +29,13 @@ function ImageCarousel({globalState, setGlobalState}: any) {
           <NameComponent className='curr-class' name={`CS ${key}`}/>
         </Carousel.Item>
       ))}
-      {levels.includes(Array.from(map.keys())[index]) && (
-          <div className="start-btn">
-            <RetroButtonJSON onClick={handleClick}>start</RetroButtonJSON>
-          </div>
-        )}
+      <div className="start-btn">
+          <RetroButtonJSON
+            onClick={levels.includes(Array.from(map.keys())[index]) ? handleClick : () => undefined}
+          >
+            {levels.includes(Array.from(map.keys())[index]) ? 'Start' : 'Not Unlocked'}
+          </RetroButtonJSON>
+        </div>
     </Carousel>
   );
 }
