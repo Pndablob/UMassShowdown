@@ -94,7 +94,7 @@ class Battle {
         if (this.actionStack.length > 0 && !this.gameOver) {
             let action = this.actionStack.pop();
 
-            if (action && action.isSwitch) {
+            if (action && action.isSwitch && !this.isGameOver()) {
                 // process player switch action
                 if (action.isPlayer) {
                     this.playerActiveProfessorIndex += 1;
@@ -178,10 +178,10 @@ class Battle {
         // return -1 if opponent wins ==> player has no professors left
 
         if (this.playerActiveProfessorIndex >= this.player.getProfessors().length) {
-            this.dialogue.addText(`You've failed ${this.course?.getCourseNumber} You've been expelled from CICS, try Isenberg instead!`);
+            this.dialogue.addText(`You've failed ${this.course?.getCourseNumber} and were expelled from CICS! Try Isenberg instead!`);
             return -1;
         } else if (this.opponentActiveProfessorIndex >= this.opponent.getProfessors().length) {
-            this.dialogue.addText("You've defeated all the professors! You've graduated from CICS! Congratulations!");
+            this.dialogue.addText(`You've passed ${this.course?.getCourseNumber}!`);
             return 1;
         }
 
