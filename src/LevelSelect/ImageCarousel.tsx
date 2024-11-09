@@ -1,10 +1,11 @@
 import { SetStateAction, useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NameComponent from './NameComponent';
 import './ImageCarousel.css';
 import map from '../Game/Courses'
-import RetroButton from '../RetroButton/RetroButton';
+import RetroButtonJSON from '../RetroButton/RetroButtonJSON';
 
 function ImageCarousel() {
   const [index, setIndex] = useState(0);
@@ -12,6 +13,11 @@ function ImageCarousel() {
   const handleSelect = (selectedIndex: SetStateAction<number>) => {
     setIndex(selectedIndex);
   };
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/teamSelect')
+  }
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect} interval={null} indicators={false} className='custom-carousel'>
@@ -21,7 +27,7 @@ function ImageCarousel() {
         </Carousel.Item>
       ))}
       <div className='start-btn'>
-        <RetroButton>start</RetroButton>
+        <RetroButtonJSON onClick={handleClick}>start</RetroButtonJSON>
       </div>
     </Carousel>
   );
