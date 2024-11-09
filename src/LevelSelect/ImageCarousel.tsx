@@ -7,7 +7,7 @@ import './ImageCarousel.css';
 import map from '../Game/Courses'
 import RetroButtonJSON from '../RetroButton/RetroButtonJSON';
 
-function ImageCarousel() {
+function ImageCarousel({globalState, setGlobalState}: any) {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex: SetStateAction<number>) => {
@@ -16,7 +16,7 @@ function ImageCarousel() {
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/teamSelect')
+    navigate('/teamSelect', {state: {globalState, setGlobalState}});
   }
 
   return (
