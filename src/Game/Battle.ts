@@ -25,8 +25,8 @@ class Battle {
         }
 
         // get opponent professors from course
-        let professorsTemplates = this.course.getProfessors();
-        let professors = professorsTemplates.map(professorTemplate => new Professor(professorTemplate));
+        let opponentProfessorTemplates = this.course.getProfessors();
+        let professors = opponentProfessorTemplates.map(opponentProfessorTemplates => new Professor(opponentProfessorTemplates));
         this.opponent = new Player(professors);
 
         // get player professors from Player
