@@ -94,14 +94,20 @@ class Battle {
         if (this.actionStack.length > 0 && !this.gameOver) {
             let action = this.actionStack.pop();
 
-            if (action && action.isSwitch && !this.isGameOver()) {
+            if (action && action.isSwitch) {
                 // process player switch action
                 if (action.isPlayer) {
                     this.playerActiveProfessorIndex += 1;
-                    this.dialogue.addText(`You sent out <b>${this.getActiveProfessor().getName()}</b>`);
+
+                    if (!this.isGameOver()) {
+                        this.dialogue.addText(`You sent out <b>${this.getActiveProfessor().getName()}</b>`);
+                    }
                 } else {
                     this.opponentActiveProfessorIndex += 1;
-                    this.dialogue.addText(`Opponent switched to ${this.getOpponentActiveProfessor().getName()}`);
+
+                    if (!this.isGameOver()) {
+                        this.dialogue.addText(`Opponent switched to ${this.getOpponentActiveProfessor().getName()}`);
+                    }
                 }
             } else if (action && action.isPlayer) {
                 // process player action ==> attack opponent active professor
