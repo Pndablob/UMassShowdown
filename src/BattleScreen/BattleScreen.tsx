@@ -3,7 +3,7 @@ import styles from './BattleScreen.module.css';
 import ProfessorElement from './ProfessorElement';
 import GlobalState from '../GlobalState/GlobalState';
 import { Dispatch, SetStateAction, useRef } from 'react';
-import Game from '../Game/Game';
+import Battle from '../Game/Battle';
 import Dialogue from '../Dialogue/Dialogue';
 import Player from '../Game/Player';
 import { Location, useLocation } from 'react-router-dom';
@@ -27,13 +27,16 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
   const dialogue = useRef(new Dialogue());
 
-  const game = useRef(new Game(dialogue.current, state.professorsChosen, state.opponent));
+  const game = useRef(new Battle(dialogue.current, state.professorsChosen, state.opponent));
+
+  let activeProf = game.current.getActiveProfessor();
+  let oppProf = game.current.getOpponentActiveProfessor();
 
   return (
     <div className={styles['container']}>
       <div className={styles['battle-container']}>
         <div className={styles['left-professor']}>
-          {game.current.getActiveProfessor()!==undefined ? <ProfessorElement professor={game.current.getActiveProfessor()}/> : ""}
+          {activeProf!==undefined ? <ProfessorElement professor={activeProf}/> : ""}
           <div className={styles['player-info-left']}>
             { game.current.getPlayerProfessors().map((prof: Professor)=>{
               return <div key={prof.getName()} className={styles['small-image-container']}>
@@ -46,11 +49,16 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
           <div className={styles['player-info-right']}>
             { game.current.getOpponentProfessors().map((prof: Professor)=>{
               return <div key={prof.getName()} className={styles['small-image-container']}>
-                <img alt={prof.getName()} src={prof.getPicture()} className={styles['small-image']}/>
+                <img 
+                  alt={prof.getName()} 
+                  src={prof.getPicture()} 
+                  className={styles['small-image']}
+                  style={{opacity: prof.getHealth()===0 ? 0.3 : 1}}
+                />
               </div>
             })}
           </div>
-          {game.current.getOpponentActiveProfessor()!==undefined ? <ProfessorElement professor={game.current.getOpponentActiveProfessor()}/> : ""}
+          {oppProf!==undefined ? <ProfessorElement professor={oppProf}/> : ""}
         </div>
       </div>
       <div className={styles['message-container']}>
