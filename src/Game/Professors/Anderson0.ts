@@ -1,4 +1,4 @@
-import image from '../../Assets/Anderson.png';
+import image from '../../Assets/Anderson.jpeg';
 
 const prof = {
     name: "Emma Anderson",

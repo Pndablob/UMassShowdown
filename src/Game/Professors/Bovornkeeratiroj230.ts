@@ -1,4 +1,4 @@
-import image from "../../Assets/Bovornkeeratiroj.png";
+import image from "../../Assets/Bovornkeeratiroj.jpeg";
 
 const prof = {
     name: "Nikko Bovornkeeratiroj",
