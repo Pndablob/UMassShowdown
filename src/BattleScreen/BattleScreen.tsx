@@ -42,12 +42,16 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
   const [dialogueText, setDialogueText] = useState("");
   const [textRemaining, setTextRemaining] = useState(true);
   const [hasMovesLeft, setHasMovesLeft] = useState(false);
-  const [activeProf, setActiveProf] = useState(game.current.getActiveProfessor().copy());
-  const [oppProf, setOppProf] = useState(game.current.getOpponentActiveProfessor().copy());
+  const [activeProf, setActiveProf] = useState<Professor | undefined>(undefined);
+  const [oppProf, setOppProf] = useState<Professor | undefined>(undefined);
 
   const updateScreen = () => {
-    setOppProf(game.current.getOpponentActiveProfessor().copy());
-    setActiveProf(game.current.getActiveProfessor().copy());
+    if (game.current.isGameOver() !== 0) {
+    } else {
+      setOppProf(game.current.getOpponentActiveProfessor().copy());
+      setActiveProf(game.current.getActiveProfessor().copy());
+    }
+    
   }
 
   const update = (hasMovesLeftTemp: boolean) => {
@@ -60,8 +64,6 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
       setMode(InfoBoxMode.MESSAGE);
       let isTextRemaining = dialogue.current.getText(setDialogueText);
       setTextRemaining(isTextRemaining);
-    } else {
-      console.log(game.current);
     }
   }
 
@@ -76,6 +78,8 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
     let isTextRemaining = dialogue.current.getText(setDialogueText);
     setTextRemaining(isTextRemaining);
+
+    updateScreen();
   }, []);
 
   useEffect(()=>{
@@ -124,7 +128,7 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
                   alt={prof.getName()} 
                   src={prof.getPicture()} 
                   className={styles['small-image']}
-                  style={{opacity: prof.getHealth()===0 ? 0.3 : 1}}
+                  style={{opacity: prof.getHealth()<=0 ? 0.3 : 1}}
                 />
               </div>
             })}

@@ -17,7 +17,6 @@ class Dialogue {
 
     setText(text)
 
-    console.log("this.buffer", this.buffer);
     return this.buffer.length !== 0;
   }
 
