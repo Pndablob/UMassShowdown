@@ -108,9 +108,14 @@ class Battle {
                 let playerActiveProfessor = this.player.getProfessors()[this.playerActiveProfessorIndex];
                 let opponentActiveProfessor = this.opponent.getProfessors()[this.opponentActiveProfessorIndex];
                 let move = playerActiveProfessor.getMoves()[action.moveIndex];
-                playerActiveProfessor.attackOpponent(opponentActiveProfessor, move);
+                let crit = Math.random() < 0.1; // 10% chance of critical hit
+                playerActiveProfessor.attackOpponent(opponentActiveProfessor, move, crit);
 
                 this.dialogue.addText(`${playerActiveProfessor.getName()} used ${move.name}!`);
+
+                if (crit) {
+                    this.dialogue.addText("It's a critical hit!");
+                }
 
                 // check if opponent professor is defeated and switch to next professor
                 if (opponentActiveProfessor.getHealth() <= 0) {
@@ -130,7 +135,8 @@ class Battle {
                 let opponentActiveProfessor = this.opponent.getProfessors()[this.opponentActiveProfessorIndex];
                 let playerActiveProfessor = this.player.getProfessors()[this.playerActiveProfessorIndex];
                 let move = opponentActiveProfessor.getMoves()[action.moveIndex];
-                opponentActiveProfessor.attackOpponent(playerActiveProfessor, move);
+                let crit = Math.random() < 0.1; // 10% chance of critical hit
+                opponentActiveProfessor.attackOpponent(playerActiveProfessor, move, crit);
 
                 this.dialogue.addText(`${opponentActiveProfessor.getName()} used ${move.name}!`);
 
@@ -146,6 +152,10 @@ class Battle {
                     });
 
                     this.dialogue.addText(`${playerActiveProfessor.getName()} fainted!`);
+                }
+
+                if (crit) {
+                    this.dialogue.addText("It's a critical hit!");
                 }
             }
         }
