@@ -1,14 +1,12 @@
 class Professor {
     private name: string;
-    private id: number;
     private health: number;
     private moves: Array<Move>;
     private picture: string;
 
 
-    constructor(name: string, id: number, health: number, moves: Array<Move>, picture: string) {
+    constructor(name: string, health: number, moves: Array<Move>, picture: string) {
         this.name = name;
-        this.id = id;
         this.health = health;
         this.moves = moves;
         this.picture = picture;
@@ -16,10 +14,6 @@ class Professor {
     
     public getName(): string {
         return this.name;
-    }
-
-    public getId(): number {
-        return this.id;
     }
 
     public getHealth(): number {
@@ -44,10 +38,6 @@ class Professor {
 
     public setName(name: string) {
         this.name = name;
-    }
-
-    public setId(id: number) {
-        this.id = id;
     }
 
     public setPicture(picture: string) {
