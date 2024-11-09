@@ -1,11 +1,13 @@
 import image from '../../Assets/Golin.jpeg';
+import Exam from '../Moves/Exam';
+import SortingStrike from '../Moves/SortingStrike';
 
 const prof = {
     name: "Mordecai Golin",
     attack: 60,
     maxHealth: 210,
     defense: 70,
-    moves: [],
+    moves: [Exam, SortingStrike],
     picture: image,
     id: 5,
 };
