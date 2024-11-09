@@ -10,7 +10,8 @@ import GlobalState from '../GlobalState/GlobalState';
 
 export default function Root() {
   const [globalState, setGlobalState] = useState<GlobalState>({
-
+    levelsUnlocked: ["110"],
+    charactersUnlocked: ["Anderson0"],
   });
 
  const router = useMemo(() => {

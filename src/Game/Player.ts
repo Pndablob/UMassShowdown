@@ -1,20 +1,14 @@
-import Professor from './Professor';
+import ProfessorTemplate from './Professor';
 
 class Player {
-    private professors: Array<Professor>;
-    private levels: Array<number>; // levels unlocked by player
+    private professors: Array<ProfessorTemplate>;
 
-    constructor(professors: Array<Professor>, levels: Array<number>) {
+    constructor(professors: Array<ProfessorTemplate>) {
         this.professors = professors;
-        this.levels = levels;
     }
 
-    public getProfessors(): Array<Professor> {
+    public getProfessors(): Array<ProfessorTemplate> {
         return this.professors;
-    }
-
-    public getLevels(): Array<number> {
-        return this.levels;
     }
 }
 

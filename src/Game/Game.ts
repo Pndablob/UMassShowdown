@@ -2,6 +2,7 @@ import Dialogue from "../Dialogue/Dialogue";
 import Courses from "./Courses";
 import Player from "./Player";
 import Professor from "./Professor";
+import ProfessorTemplate from './ProfessorTemplate';
 import Action from "./Action";
 
 class Game {
@@ -12,9 +13,8 @@ class Game {
     private playerActiveProfessor: Professor|undefined;
     private opponentActiveProfessor: Professor|undefined;
 
-    constructor(dialogue: Dialogue, player: Player, courseID: string) {
+    constructor(dialogue: Dialogue, playerTeam: ProfessorTemplate[], courseID: string) {
         this.dialogue = dialogue;
-        this.player = player;
         
         // construct opponent Player based on course ID
         // get course based on course ID
@@ -28,7 +28,12 @@ class Game {
         // get professors from course
         let professorsTemplates = course.getProfessors();
         let professors = professorsTemplates.map(professorTemplate => new Professor(professorTemplate));
-        this.opponent = new Player(professors, []);
+        this.opponent = new Player(professors);
+
+        // get professors from Player
+        let playerProfessorTemplates: ProfessorTemplate[] = playerTeam;
+        let playerProfessors: Professor[] = playerProfessorTemplates.map(professorsTemplate => new Professor(professorsTemplate));
+        this.player = new Player(playerProfessors);
 
         // start battle by calling initBattle
     }
