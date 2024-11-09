@@ -1,10 +1,11 @@
 .container {
-  height: 100vh;
-  width: 100vw;
-  text-align: center;
   /*background-image: url("/public/dubois_pixelated.jpeg");*/
   /*background-repeat:no-repeat;*/
   /*background-size: cover;*/
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  background-color: lightcyan;
   display: flex;
   flex-direction: column;
   justify-content:space-between;
@@ -79,6 +80,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
+  background-color:white;
 }
 
 .player-info-right {
@@ -93,6 +95,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
+  background-color:white;
 }
 
 .small-image-container {

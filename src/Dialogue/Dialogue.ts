@@ -1,6 +1,5 @@
 class Dialogue {
-  private buffer: string[] = [];
-
+  public buffer: string[] = [];
   constuctor() {
   }
 
@@ -11,13 +10,14 @@ class Dialogue {
     if (this.buffer.length === 0) 
       throw new Error("No more text to get from buffer");
 
-    let text = this.buffer.pop();
+    let text = this.buffer.shift();
     if (text === undefined) {
       throw new Error("undefined text");
     }
 
     setText(text)
 
+    console.log("this.buffer", this.buffer);
     return this.buffer.length !== 0;
   }
 

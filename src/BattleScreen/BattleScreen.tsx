@@ -2,13 +2,20 @@ import MessageBox from '../MessageBox/MessageBox';
 import styles from './BattleScreen.module.css';
 import ProfessorElement from './ProfessorElement';
 import GlobalState from '../GlobalState/GlobalState';
-import { Dispatch, SetStateAction, useRef } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import Battle from '../Game/Battle';
 import Dialogue from '../Dialogue/Dialogue';
 import Player from '../Game/Player';
-import { Location, useLocation } from 'react-router-dom';
+import { useNavigate, Location, useLocation } from 'react-router-dom';
 import ProfessorTemplate from '../Game/ProfessorTemplate';
 import Professor from '../Game/Professor';
+import BattleBox from '../BattleBox/BattleBox';
+
+enum InfoBoxMode {
+  MESSAGE,
+  BATTLE1,
+  BATTLE2
+}
 
 interface BattleScreenArgs {
   globalState: GlobalState;
@@ -21,16 +28,49 @@ export interface BattleInitArgs {
 }
 
 function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
+
+  const navigate = useNavigate();
+
   const location: Location = useLocation();
   const state: BattleInitArgs = location.state;
-  console.log(state);
+
+  const [mode, setMode] = useState<InfoBoxMode>(InfoBoxMode.MESSAGE);
 
   const dialogue = useRef(new Dialogue());
+  const [dialogueText, setDialogueText] = useState("");
+  const [textRemaining, setTextRemaining] = useState(true);
+
+
+  useEffect(()=>{
+    dialogue.current.addText(`${state.opponent} has begun! Press ENTER to continue.`);
+    dialogue.current.addText(`Press ENTER to continue.`);
+
+    let isTextRemaining = dialogue.current.getText(setDialogueText);
+    setTextRemaining(isTextRemaining);
+  }, []);
+
+  useEffect(()=>{
+    const onEnter = (event: KeyboardEvent)=> {
+      if (event.key !== "Enter") return;
+      if (mode === InfoBoxMode.MESSAGE) {
+        if (textRemaining) {
+          let isTextRemaining = dialogue.current.getText(setDialogueText);
+          setTextRemaining(isTextRemaining);
+        } else {
+          setMode(InfoBoxMode.BATTLE1);
+        }
+      }
+    }
+
+    window.addEventListener('keypress', onEnter);
+    return () => {window.removeEventListener('keypress', onEnter)};
+  }, [mode, textRemaining])
 
   const game = useRef(new Battle(dialogue.current, state.professorsChosen, state.opponent));
 
   let activeProf = game.current.getActiveProfessor();
   let oppProf = game.current.getOpponentActiveProfessor();
+
 
   return (
     <div className={styles['container']}>
@@ -62,7 +102,53 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
         </div>
       </div>
       <div className={styles['message-container']}>
-        <MessageBox>SAMPLE TEXT</MessageBox>
+        { mode===InfoBoxMode.MESSAGE ? 
+          <MessageBox>{dialogueText}</MessageBox> : 
+          (mode===InfoBoxMode.BATTLE1 ? <BattleBox moves={
+            [
+              {
+                name: "USE MOVE",
+                color: "#f18073",
+                callback: ()=>{
+                  setMode(InfoBoxMode.BATTLE2);
+                },
+              },
+              {
+                name: "FORFEIT",
+                color: "lightblue",
+                callback: ()=>{navigate("/");}
+              }
+            ]
+          } /> : <BattleBox moves={
+            [
+              {
+                name: activeProf && activeProf.getMoves().length > 0 ? activeProf.getMoves()[0].getName() : "",
+                color: "#C084E7",
+                callback: ()=>{},
+                disabled: !(activeProf && activeProf.getMoves().length > 0),
+              },
+              {
+                name: activeProf && activeProf.getMoves().length > 1 ? activeProf.getMoves()[1].getName() : "",
+                color: "#C084E7",
+                callback: ()=>{},
+                disabled: !(activeProf && activeProf.getMoves().length > 1),
+              },
+              {
+                name: activeProf && activeProf.getMoves().length > 2 ? activeProf.getMoves()[2].getName() : "",
+                color: "#C084E7",
+                callback: ()=>{},
+                disabled: !(activeProf && activeProf.getMoves().length > 2),
+              },
+              {
+                name: activeProf && activeProf.getMoves().length > 3 ? activeProf.getMoves()[3].getName() : "",
+                color: "#C084E7",
+                callback: ()=>{},
+                disabled: !(activeProf && activeProf.getMoves().length > 3),
+              },
+            ]
+          } />
+          )
+        }
       </div>
     </div>
   );

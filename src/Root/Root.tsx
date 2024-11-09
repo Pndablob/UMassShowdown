@@ -34,8 +34,10 @@ export default function Root() {
     ])
   }, [globalState, setGlobalState]);
 
-  return (<React.StrictMode>
+  return (
+    //<React.StrictMode>
      <RouterProvider router={router}/>
-  </React.StrictMode>)
+    //</React.StrictMode>
+  )
 }
 
