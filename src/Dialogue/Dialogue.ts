@@ -24,6 +24,10 @@ class Dialogue {
   public addText(text: string) {
     this.buffer.push(text);
   }
+
+  public hasText(): boolean {
+    return this.buffer.length !== 0;
+  }
 }
 
 export default Dialogue;

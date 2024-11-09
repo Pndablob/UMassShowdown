@@ -2,7 +2,7 @@ import styles from './BattleScreen.module.css';
 import Professor from '../Game/Professor';
 
 export default function ProfessorElement({professor}: {professor: Professor}) {
-  let health = 50;//professor.getHealth()/professor.getMaxHealth();
+  let health = professor.getHealth()/professor.getMaxHealth();
 
   return <div className={styles['professor-interior']}>
     <div>

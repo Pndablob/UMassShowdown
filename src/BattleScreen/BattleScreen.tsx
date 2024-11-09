@@ -40,6 +40,21 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
   const [dialogueText, setDialogueText] = useState("");
   const [textRemaining, setTextRemaining] = useState(true);
 
+  console.log(location.state);
+
+  const useMove = (move: number) => {
+    let hasMovesLeft = game.current.processAction({isPlayer: true, isSwitch: false, moveIndex: move});
+
+    let hasText = dialogue.current.hasText();
+
+    setTextRemaining(hasText);
+
+    if (hasText) {
+      setMode(InfoBoxMode.MESSAGE);
+    } else {
+    }
+
+  }
 
   useEffect(()=>{
     dialogue.current.addText(`${state.opponent} has begun! Press ENTER to continue.`);
@@ -122,27 +137,27 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
           } /> : <BattleBox moves={
             [
               {
-                name: activeProf && activeProf.getMoves().length > 0 ? activeProf.getMoves()[0].getName() : "",
+                name: activeProf && activeProf.getMoves().length > 0 ? activeProf.getMoves()[0].name : "",
                 color: "#C084E7",
-                callback: ()=>{},
+                callback: ()=>{useMove(0)},
                 disabled: !(activeProf && activeProf.getMoves().length > 0),
               },
               {
-                name: activeProf && activeProf.getMoves().length > 1 ? activeProf.getMoves()[1].getName() : "",
+                name: activeProf && activeProf.getMoves().length > 1 ? activeProf.getMoves()[1].name : "",
                 color: "#C084E7",
-                callback: ()=>{},
+                callback: ()=>{useMove(1)},
                 disabled: !(activeProf && activeProf.getMoves().length > 1),
               },
               {
-                name: activeProf && activeProf.getMoves().length > 2 ? activeProf.getMoves()[2].getName() : "",
+                name: activeProf && activeProf.getMoves().length > 2 ? activeProf.getMoves()[2].name : "",
                 color: "#C084E7",
-                callback: ()=>{},
+                callback: ()=>{useMove(2)},
                 disabled: !(activeProf && activeProf.getMoves().length > 2),
               },
               {
-                name: activeProf && activeProf.getMoves().length > 3 ? activeProf.getMoves()[3].getName() : "",
+                name: activeProf && activeProf.getMoves().length > 3 ? activeProf.getMoves()[3].name : "",
                 color: "#C084E7",
-                callback: ()=>{},
+                callback: ()=>{useMove(3)},
                 disabled: !(activeProf && activeProf.getMoves().length > 3),
               },
             ]
