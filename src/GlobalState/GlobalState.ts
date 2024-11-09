@@ -12,6 +12,7 @@ export interface GlobalStateSerialized {
 }
 
 export function getStateFromSerialized(ser: GlobalStateSerialized): GlobalState {
+  console.log(ser.levelsUnlocked);
   return {
     levelsUnlocked: ser.levelsUnlocked,
     charactersUnlocked: ser.charactersUnlocked.map((id)=>getProfFromID(id))
