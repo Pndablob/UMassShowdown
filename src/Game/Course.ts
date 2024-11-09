@@ -1,8 +1,10 @@
+import Professor from './Professor';
+
 class Course {
     private professorList: Array<Professor>;
-    private courseNumber: number;
+    private courseNumber: string;
 
-    constructor(professorList: Array<Professor>, courseNumber: number) {
+    constructor(professorList: Array<Professor>, courseNumber: string) {
         this.professorList = professorList;
         this.courseNumber = courseNumber;
     }
@@ -11,7 +13,7 @@ class Course {
         return this.professorList;
     }
 
-    public getCourseNumber(): number {
+    public getCourseNumber(): string {
         return this.courseNumber;
     }
 }

@@ -6,9 +6,62 @@
 
 .battle-container {
   height: 85%;
+  display: flex;
+  flex-direction: row;
 }
 
 .message-container {
   height: 15%;
   align-content: center;
+}
+
+.left-professor {
+  width: 55%;
+  height: 100%;
+  background-color: red;
+  border-width:5px;
+  border-color: gray;
+  border-style: solid;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.right-professor {
+  width: 45%;
+  height: 100%;
+  background-color: red;
+  border-width:5px;
+  border-color: gray;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.professor-interior {
+  background-color: lightblue;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.health-bar-container {
+  width: 80%;
+  margin: 10px auto;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  height: 30px;
+}
+
+.health-bar {
+  background-color: green;
+  height: 100%;
+  width: 80%;
+}
+
+.professor-image-container {
+  flex: 1;
+  background-color: black;
+  margin: 3rem;
 }

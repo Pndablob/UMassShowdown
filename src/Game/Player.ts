@@ -1,3 +1,5 @@
+import Professor from './Professor';
+
 class Player {
     private professors: Array<Professor>;
     private levels: Array<number>; // levels unlocked by player

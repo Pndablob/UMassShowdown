@@ -6,9 +6,7 @@ import {
 import BattleScreen from '../BattleScreen/BattleScreen';
 import LevelSelect from '../LevelSelect/LevelSelect';
 import TeamSelect from '../TeamSelectScreen/TeamSelectScreen';
-
-interface GlobalState {
-}
+import GlobalState from '../GlobalState/GlobalState';
 
 export default function Root() {
   const [globalState, setGlobalState] = useState<GlobalState>();
