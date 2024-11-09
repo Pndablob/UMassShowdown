@@ -37,5 +37,11 @@
   height: 85%;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 10px;
+  align-content: start;
+  justify-content: center;
 }
 

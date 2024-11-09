@@ -1,0 +1,22 @@
+.container {
+  width: 10rem;
+  height: 10rem;
+  border-style: solid;
+  border-color: red;
+  cursor: pointer;
+}
+
+.container:hover{
+  opacity: 0.8;
+}
+
+.disabled-container {
+  width: 10rem;
+  height: 10rem;
+  border-style: solid;
+  border-color: black;
+}
+
+.image {
+  width: 100%;
+}

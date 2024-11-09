@@ -7,4 +7,7 @@
   border-style: solid;
   background-color: lightgray;
   margin: 0 auto;
+  font-family: PixeloidMono;
+  padding: 10px;
+  font-size: 1.2rem;
 }

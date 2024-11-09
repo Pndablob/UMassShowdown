@@ -22,6 +22,8 @@ export interface BattleInitArgs {
 function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
   const location: Location = useLocation();
   const state: BattleInitArgs = location.state;
+  console.log(state);
+
 
   const dialogue = useRef(new Dialogue());
 
@@ -38,7 +40,7 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
         </div>
       </div>
       <div className={styles['message-container']}>
-        <MessageBox />
+        <MessageBox>SAMPLE TEXT</MessageBox>
       </div>
     </div>
   );
