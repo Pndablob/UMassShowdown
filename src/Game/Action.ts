@@ -1,5 +1,6 @@
 interface Action {
-    isPlayer: boolean;
+    isPlayer: boolean; // player or opponent
+    isSwitch: boolean; // switch or attack
     moveIndex: number;
 }
 

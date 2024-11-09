@@ -1,4 +1,4 @@
-import Move from "./Move";
+import Move from "./MoveTemplate";
 
 interface ProfessorTemplate {
     name: string;

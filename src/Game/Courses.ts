@@ -16,14 +16,14 @@ import Wilson240 from "./Professors/Wilson240"
 import Course from './Course';
 
 let map: Map<string, Course> = new Map(Object.entries({
-    110: new Course([], "110"),
-    160: new Course([Davila160, Reilly160], "160"),
-    210: new Course([Golin210, Liberatore210, Richards210], "210"),
-    220: new Course([Minea220], "220"),
-    230: new Course([Bovornkeeratiroj230, Chiu230], "230"),
-    240: new Course([Lan240, Wilson240], "240"),
-    250: new Course([Barrington250, Golin250], "250"),
-    311: new Course([Minea311, Parvini311, Sheldon311], "311"),
+    110: new Course([], "CICS 110"),
+    160: new Course([Davila160, Reilly160], "CICS 160"),
+    210: new Course([Golin210, Liberatore210, Richards210], "CICS 210"),
+    220: new Course([Minea220], "CS 220"),
+    230: new Course([Bovornkeeratiroj230, Chiu230], "CS 230"),
+    240: new Course([Lan240, Wilson240], "CS 240"),
+    250: new Course([Barrington250, Golin250], "CS 250"),
+    311: new Course([Minea311, Parvini311, Sheldon311], "CS 311"),
 }))
 
 export default map;

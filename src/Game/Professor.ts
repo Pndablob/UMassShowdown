@@ -1,4 +1,4 @@
-import Move from "./Move";
+import Move from "./MoveTemplate";
 import ProfessorTemplate from "./ProfessorTemplate";
 
 class Professor {
@@ -20,8 +20,8 @@ class Professor {
     }
 
     public attackOpponent(opponent: Professor, move: Move) {
-        // calculate damage = power * attack * critical chance * random modifier
-        let damage = move.getPower() * this.attack;
+        // calculate damage = power * attack * critical chance (1.25 modifier 10% of the time) * random modifier (0.85 - 1.0)
+        let damage = move.power * this.attack * (Math.random() < 0.1 ? 1.25 : 1) * (Math.random() * 0.15 + 0.85);
         opponent.takeDamage(damage);
     }
 
