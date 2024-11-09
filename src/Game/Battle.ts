@@ -8,7 +8,7 @@ import Course from "./Course";
 
 class Battle {
     private dialogue: Dialogue;
-    private course: Course;
+    private course: Course | undefined;
     private player: Player;
     private opponent: Player;
     private actionStack: Action[] = [];
@@ -19,12 +19,8 @@ class Battle {
     constructor(dialogue: Dialogue, playerTeam: ProfessorTemplate[], courseID: string) {
         this.dialogue = dialogue;
         
-        // construct opponent Player based on course ID
-        // get course based on course ID
         this.course = Courses.get(courseID);
-        
-        // catch nonexistent course
-        if (!this.course) {
+        if (!this.course) { // catch nonexistent courses
             throw new Error(`Course with ID ${courseID} not found`);
         }
 
@@ -109,7 +105,7 @@ class Battle {
                 let move = playerActiveProfessor.getMoves()[action.moveIndex];
                 playerActiveProfessor.attackOpponent(opponentActiveProfessor, move);
 
-                this.dialogue.addText(`${playerActiveProfessor.getName()} used ${move.getName()}!`);
+                this.dialogue.addText(`${playerActiveProfessor.getName()} used ${move.name}!`);
 
                 // check if opponent professor is defeated and switch to next professor
                 if (opponentActiveProfessor.getHealth() <= 0) {
@@ -131,7 +127,7 @@ class Battle {
                 let move = opponentActiveProfessor.getMoves()[action.moveIndex];
                 opponentActiveProfessor.attackOpponent(playerActiveProfessor, move);
 
-                this.dialogue.addText(`${opponentActiveProfessor.getName()} used ${move.getName()}!`);
+                this.dialogue.addText(`${opponentActiveProfessor.getName()} used ${move.name}!`);
 
                 // check if player professor is defeated and switch to next professor
                 if (playerActiveProfessor.getHealth() <= 0) {
@@ -167,7 +163,7 @@ class Battle {
         // return -1 if opponent wins ==> player has no professors left
 
         if (this.playerActiveProfessorIndex >= this.player.getProfessors().length) {
-            this.dialogue.addText(`You've failed ${this.course.getCourseNumber} You've been expelled from CICS, try Isenberg instead!`);
+            this.dialogue.addText(`You've failed ${this.course?.getCourseNumber} You've been expelled from CICS, try Isenberg instead!`);
             return -1;
         } else if (this.opponentActiveProfessorIndex >= this.opponent.getProfessors().length) {
             this.dialogue.addText("You've defeated all the professors! You've graduated from CICS! Congratulations!");
