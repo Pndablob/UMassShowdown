@@ -7,7 +7,7 @@ class Dialogue {
   /**
   * return true iff any text if left in the buffer
   */
-  public putText(setText: (text: string)=>void): boolean {
+  public getText(setText: (text: string)=>void): boolean {
     if (this.buffer.length === 0) 
       throw new Error("No more text to get from buffer");
 
@@ -19,6 +19,10 @@ class Dialogue {
     setText(text)
 
     return this.buffer.length !== 0;
+  }
+
+  public addText(text: string) {
+    this.buffer.push(text);
   }
 }
 
