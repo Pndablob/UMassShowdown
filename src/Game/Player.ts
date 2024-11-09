@@ -1,13 +1,13 @@
 import ProfessorTemplate from './Professor';
 
 class Player {
-    private professors: Array<ProfessorTemplate>;
+    private professors: ProfessorTemplate[];
 
-    constructor(professors: Array<ProfessorTemplate>) {
+    constructor(professors: ProfessorTemplate[]) {
         this.professors = professors;
     }
 
-    public getProfessors(): Array<ProfessorTemplate> {
+    public getProfessors(): ProfessorTemplate[] {
         return this.professors;
     }
 }

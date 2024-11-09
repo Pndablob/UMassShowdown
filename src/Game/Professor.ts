@@ -6,7 +6,7 @@ class Professor {
     private attack: number;
     private health: number;
     private maxHealth: number;
-    private moves: Array<Move>;
+    private moves: Move[];
     private picture: string;
 
 
@@ -17,6 +17,16 @@ class Professor {
         this.maxHealth = template.health;
         this.moves = template.moves;
         this.picture = template.picture;
+    }
+
+    public attackOpponent(opponent: Professor, move: Move) {
+        // calculate damage = power * attack * critical chance * random modifier
+        let damage = move.getPower() * this.attack;
+        opponent.takeDamage(damage);
+    }
+
+    public takeDamage(damage: number) {
+        this.health -= damage;
     }
     
     public getName(): string {
@@ -35,7 +45,7 @@ class Professor {
         return this.maxHealth;
     }
 
-    public getMoves(): Array<Move> {
+    public getMoves(): Move[] {
         return this.moves;
     }
 
@@ -51,7 +61,7 @@ class Professor {
         this.health = health;
     }
 
-    public setMove(moves: Array<Move>) {
+    public setMove(moves: Move[]) {
         this.moves = moves;
     }
 
@@ -61,10 +71,6 @@ class Professor {
 
     public setPicture(picture: string) {
         this.picture = picture;
-    }
-
-    public takeDamage(damage: number) {
-        this.health -= damage;
     }
 }
 

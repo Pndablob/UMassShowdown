@@ -1,15 +1,15 @@
 import ProfessorTemplate from "./ProfessorTemplate";
 
 class Course {
-    private professorList: Array<ProfessorTemplate>;
+    private professorList: ProfessorTemplate[];
     private courseNumber: string;
 
-    constructor(professorList: Array<ProfessorTemplate>, courseNumber: string) {
+    constructor(professorList: ProfessorTemplate[], courseNumber: string) {
         this.professorList = professorList;
         this.courseNumber = courseNumber;
     }
 
-    public getProfessors(): Array<ProfessorTemplate> {
+    public getProfessors(): ProfessorTemplate[] {
         return this.professorList;
     }
 
