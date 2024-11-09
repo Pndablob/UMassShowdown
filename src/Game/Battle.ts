@@ -68,6 +68,11 @@ class Battle {
         // add given player action to queue
         this.actionStack.push(action);
 
+        // throw error when length of opponent professor moves is 0
+        if (this.opponent.getProfessors()[0].getMoves().length === 0) {
+            throw new Error("Opponent professor has no moves");
+        }
+
         // add opponent action to queue
         this.actionStack.push({
             isPlayer: false,
