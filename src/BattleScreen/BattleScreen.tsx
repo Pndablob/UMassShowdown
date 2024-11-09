@@ -39,11 +39,12 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
   const dialogue = useRef(new Dialogue());
   const [dialogueText, setDialogueText] = useState("");
   const [textRemaining, setTextRemaining] = useState(true);
+  const [hasMovesLeft, setHasMovesLeft] = useState(false);
 
   console.log(location.state);
 
   const useMove = (move: number) => {
-    let hasMovesLeft = game.current.processAction({isPlayer: true, isSwitch: false, moveIndex: move});
+    let hasMovesLeftTemp = game.current.processAction({isPlayer: true, isSwitch: false, moveIndex: move});
 
     let hasText = dialogue.current.hasText();
 
@@ -51,9 +52,11 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
     if (hasText) {
       setMode(InfoBoxMode.MESSAGE);
-    } else {
+      let isTextRemaining = dialogue.current.getText(setDialogueText);
+      setTextRemaining(isTextRemaining);
     }
 
+    setHasMovesLeft(hasMovesLeftTemp);
   }
 
   useEffect(()=>{
@@ -72,7 +75,11 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
           let isTextRemaining = dialogue.current.getText(setDialogueText);
           setTextRemaining(isTextRemaining);
         } else {
-          setMode(InfoBoxMode.BATTLE1);
+          if (hasMovesLeft) {
+
+          } else {
+            setMode(InfoBoxMode.BATTLE1);
+          }
         }
       }
     }
