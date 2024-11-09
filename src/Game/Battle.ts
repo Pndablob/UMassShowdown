@@ -184,10 +184,10 @@ class Battle {
         // return -1 if opponent wins ==> player has no professors left
 
         if (this.playerActiveProfessorIndex >= this.player.getProfessors().length) {
-            this.dialogue.addText(`You've failed ${this.course?.getCourseNumber} and were expelled from CICS! Try Isenberg instead!`);
+            this.dialogue.addText(`You've failed ${this.course?.getCourseNumber()} and were expelled from CICS! Try Isenberg instead!`);
             return -1;
         } else if (this.opponentActiveProfessorIndex >= this.opponent.getProfessors().length) {
-            this.dialogue.addText(`You've passed ${this.course?.getCourseNumber}!`);
+            this.dialogue.addText(`You've passed ${this.course?.getCourseNumber()}!`);
             return 1;
         }
 
