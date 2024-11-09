@@ -43,20 +43,25 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
   console.log(location.state);
 
-  const useMove = (move: number) => {
-    let hasMovesLeftTemp = game.current.processAction({isPlayer: true, isSwitch: false, moveIndex: move});
-
+  const update = (hasMovesLeftTemp: boolean) => {
     let hasText = dialogue.current.hasText();
 
     setTextRemaining(hasText);
+    setHasMovesLeft(hasMovesLeftTemp);
 
     if (hasText) {
       setMode(InfoBoxMode.MESSAGE);
       let isTextRemaining = dialogue.current.getText(setDialogueText);
       setTextRemaining(isTextRemaining);
+    } else {
+      activeProf.current = game.current.getActiveProfessor();
+      oppProf.current = game.current.getOpponentActiveProfessor();
     }
+  }
 
-    setHasMovesLeft(hasMovesLeftTemp);
+  const makeMove = (move: number) => {
+    let hasMovesLeftTemp = game.current.processAction({isPlayer: true, isSwitch: false, moveIndex: move});
+    update(hasMovesLeftTemp);
   }
 
   useEffect(()=>{
@@ -76,7 +81,8 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
           setTextRemaining(isTextRemaining);
         } else {
           if (hasMovesLeft) {
-
+            let hasMovesLeftTemp = game.current.gameLoop();
+            update(hasMovesLeftTemp);
           } else {
             setMode(InfoBoxMode.BATTLE1);
           }
@@ -90,15 +96,14 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
   const game = useRef(new Battle(dialogue.current, state.professorsChosen, state.opponent));
 
-  let activeProf = game.current.getActiveProfessor();
-  let oppProf = game.current.getOpponentActiveProfessor();
-
+  const activeProf = useRef(game.current.getActiveProfessor());
+  const oppProf = useRef(game.current.getOpponentActiveProfessor());
 
   return (
     <div className={styles['container']}>
       <div className={styles['battle-container']}>
         <div className={styles['left-professor']}>
-          {activeProf!==undefined ? <ProfessorElement professor={activeProf}/> : ""}
+          {activeProf.current!==undefined ? <ProfessorElement professor={activeProf.current}/> : ""}
           <div className={styles['player-info-left']}>
             { game.current.getPlayerProfessors().map((prof: Professor)=>{
               return <div key={prof.getName()} className={styles['small-image-container']}>
@@ -120,7 +125,7 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
               </div>
             })}
           </div>
-          {oppProf!==undefined ? <ProfessorElement professor={oppProf}/> : ""}
+          {oppProf.current!==undefined ? <ProfessorElement professor={oppProf.current}/> : ""}
         </div>
       </div>
       <div className={styles['message-container']}>
@@ -144,28 +149,28 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
           } /> : <BattleBox moves={
             [
               {
-                name: activeProf && activeProf.getMoves().length > 0 ? activeProf.getMoves()[0].name : "",
+                name: activeProf.current && activeProf.current.getMoves().length > 0 ? activeProf.current.getMoves()[0].name : "",
                 color: "#C084E7",
-                callback: ()=>{useMove(0)},
-                disabled: !(activeProf && activeProf.getMoves().length > 0),
+                callback: ()=>{makeMove(0)},
+                disabled: !(activeProf.current && activeProf.current.getMoves().length > 0),
               },
               {
-                name: activeProf && activeProf.getMoves().length > 1 ? activeProf.getMoves()[1].name : "",
+                name: activeProf.current && activeProf.current.getMoves().length > 1 ? activeProf.current.getMoves()[1].name : "",
                 color: "#C084E7",
-                callback: ()=>{useMove(1)},
-                disabled: !(activeProf && activeProf.getMoves().length > 1),
+                callback: ()=>{makeMove(1)},
+                disabled: !(activeProf.current && activeProf.current.getMoves().length > 1),
               },
               {
-                name: activeProf && activeProf.getMoves().length > 2 ? activeProf.getMoves()[2].name : "",
+                name: activeProf.current && activeProf.current.getMoves().length > 2 ? activeProf.current.getMoves()[2].name : "",
                 color: "#C084E7",
-                callback: ()=>{useMove(2)},
-                disabled: !(activeProf && activeProf.getMoves().length > 2),
+                callback: ()=>{makeMove(2)},
+                disabled: !(activeProf.current && activeProf.current.getMoves().length > 2),
               },
               {
-                name: activeProf && activeProf.getMoves().length > 3 ? activeProf.getMoves()[3].name : "",
+                name: activeProf.current && activeProf.current.getMoves().length > 3 ? activeProf.current.getMoves()[3].name : "",
                 color: "#C084E7",
-                callback: ()=>{useMove(3)},
-                disabled: !(activeProf && activeProf.getMoves().length > 3),
+                callback: ()=>{makeMove(3)},
+                disabled: !(activeProf.current && activeProf.current.getMoves().length > 3),
               },
             ]
           } />
