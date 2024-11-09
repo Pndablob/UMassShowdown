@@ -5,4 +5,5 @@ export default {
     maxHealth: 0,
     moves: [],
     picture: "",
+    id: 13,
 }
