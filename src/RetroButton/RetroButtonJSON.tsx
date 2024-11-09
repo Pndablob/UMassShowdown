@@ -6,7 +6,7 @@ interface RetroButtonProps {
   children: ReactNode;  // To accept any children inside the button (like text or other elements)
 }
 
-function RetroButton({ onClick, children }: RetroButtonProps) {
+function RetroButtonJSON({ onClick, children }: RetroButtonProps) {
   return (
     <button className={styles['retro-button']} onClick={onClick}>
       {children}  {/* Display the children inside the button */}
@@ -14,4 +14,4 @@ function RetroButton({ onClick, children }: RetroButtonProps) {
   );
 }
 
-export default RetroButton;
+export default RetroButtonJSON;
