@@ -48,3 +48,5 @@ class Professor {
         this.health -= damage;
     }
 }
+
+export default Professor;

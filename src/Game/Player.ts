@@ -15,3 +15,5 @@ class Player {
         return this.levels;
     }
 }
+
+export default Player;

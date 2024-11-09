@@ -6,4 +6,14 @@ class Course {
         this.professorList = professorList;
         this.courseNumber = courseNumber;
     }
+
+    public getProfessors(): Array<Professor> {
+        return this.professorList;
+    }
+
+    public getCourseNumber(): number {
+        return this.courseNumber;
+    }
 }
+
+export default Course;

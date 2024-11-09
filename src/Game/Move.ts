@@ -23,3 +23,5 @@ class Move {
         this.damage = damage;
     }
 }
+
+export default Move;

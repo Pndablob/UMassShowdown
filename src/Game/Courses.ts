@@ -14,8 +14,7 @@ import Richards210 from "./Professors/Richards210"
 import Sheldon311 from "./Professors/Sheldon311"
 import Wilson240 from "./Professors/Wilson240"
 
-
-export default {
+let map: Map<string, Course> = new Map(Object.entries({
     110: new Course([]);
     160: new Course([Davila160, Reilly160]);
     210: new Course([Golin210, Liberatore210, Richards210]);
@@ -24,4 +23,6 @@ export default {
     240: new Course([Lan240, Wilson240]);
     250: new Course([Barrington250, Golin250]);
     311: new Course([Minea311, Parvini311, Sheldon311]);
-}
+}))
+
+export default map;
