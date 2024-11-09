@@ -22,8 +22,8 @@ class Professor {
     }
 
     public attackOpponent(opponent: Professor, move: Move) {
-        // calculate damage = power * attack * critical chance (1.25 modifier 10% of the time) * random modifier (0.85 - 1.0)
-        let damage = move.power * this.attack * (Math.random() < 0.1 ? 1.25 : 1) * (Math.random() * 0.15 + 0.85);
+        // calculate damage = power * attack * critical chance (1.25 modifier 10% of the time) * random modifier (0.85 - 1.0) / defense
+        let damage = move.power * this.attack * (Math.random() < 0.1 ? 1.25 : 1) * (Math.random() * 0.15 + 0.85) / opponent.defense;
         opponent.takeDamage(damage);
     }
 
