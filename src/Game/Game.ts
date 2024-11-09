@@ -1,24 +1,36 @@
+import Dialogue from "../Dialogue/Dialogue";
+
 class Game {
+    private dialogue: Dialogue;
     private player: Player;
-    private opponent: Player;
+    // private opponent: Player;
 
     getPlayerProfessors() {
         return this.player.getProfessors();
     }
 
-    getOpponentProfessors() {
-        return this.opponent.getProfessors();
+    updateState() {
+        // update state of battle
     }
 
-    constructor(player: Player, opponent: Player) {
+    // getOpponentProfessors() {
+    //     return this.opponent.getProfessors();
+    // }
+
+    constructor(dialogue: Dialogue, player: Player, opponentID: number) {
+        this.dialogue = dialogue;
         this.player = player;
-        this.opponent = opponent;
+        
+        // construct opponent: Player based on opponent ID
+
+        // call initBattle
     }
-    
-    start() {
-        console.log('Game start');
-    }
-    stop() {
-        console.log('Game stop');
+
+    initBattle() {
+        // get player professors
+        // get opponent professors
+        // start battle
     }
 }
+
+export default Game;
