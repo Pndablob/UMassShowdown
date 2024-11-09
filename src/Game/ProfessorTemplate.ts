@@ -7,6 +7,7 @@ interface ProfessorTemplate {
     maxHealth: number;
     moves: Array<Move>;
     picture: string;
+    id: number;
 }
 
 export default ProfessorTemplate;
