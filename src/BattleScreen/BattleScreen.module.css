@@ -12,7 +12,7 @@
 
 .message-container {
   height: 15%;
-  align-content: center;
+  text-align: start;
 }
 
 .left-professor {

@@ -7,12 +7,13 @@ interface RetroButtonArgs {
   children: ReactNode;
   to: string;
   state: any;
+  disabled: boolean;
 }
 
-function RetroButton({children, to, state}: RetroButtonArgs) {
+function RetroButton({children, to, state, disabled}: RetroButtonArgs) {
   return (
     <Link className={styles['retro-button']} to={to} state={state}>
-      <button>
+      <button disabled={disabled}>
         {children}
       </button>
     </Link>

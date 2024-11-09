@@ -66,7 +66,7 @@ function TeamSelect({globalState, setGlobalState}: TeamSelectArgs) {
             }
           )}
         </div>
-        <RetroLink to="/battleScreen" state={battleInitState}>Select Team</RetroLink>
+        <RetroLink disabled={myTeam.current.length == 0} to="/battleScreen" state={battleInitState}>Start Class</RetroLink>
       </div>
     </div>
   );
