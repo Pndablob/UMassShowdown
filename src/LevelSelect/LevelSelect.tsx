@@ -1,13 +1,11 @@
 import React from 'react';
-import logo from './../logo.svg';
-import './../App.css';
+import ImageCarousel from './ImageCarousel';
 
 function LevelSelect({globalState, setGlobalState}: any) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Level Select Screen</h1>
-      </header>
+    <div>
+        <h1>UMass Showdown</h1>
+      <ImageCarousel/>
     </div>
   );
 }
