@@ -46,7 +46,7 @@ function LevelSelect({globalState, setGlobalState}: any) {
 
   return (
     <div>
-        <h1 className='level-select-title'>UMass Showdown</h1>
+        <h1 className='level-select-title'>CICS Showdown</h1>
         <ImageCarousel globalState={globalState} setGlobalState={setGlobalState}/>
         <input
           ref={fileInputRef}
