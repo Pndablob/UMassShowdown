@@ -2,7 +2,7 @@
     display: flex;
     border: 2px solid black;
     width: 50%;
-    height: 500px;
+    height: 450px;
     margin-left: 25%;
     margin-right: 25%;
 }
@@ -11,8 +11,8 @@
     display: flex;
     text-align: center;
     align-items: center;
-    width: 25%;
-    height: 25%;
+    width: 50%;
+    height: 50%;
     margin: auto;
     border: 2px solid black;
 }
