@@ -74,6 +74,18 @@ class Professor {
     public setPicture(picture: string) {
         this.picture = picture;
     }
+
+    public copy(): Professor {
+        return new Professor({
+            name: this.name,
+            attack: this.attack,
+            maxHealth: this.maxHealth,
+            defense: this.defense,
+            moves: this.moves,
+            picture: this.picture,
+            id: -1,
+        });
+    }
 }
 
 export default Professor;
