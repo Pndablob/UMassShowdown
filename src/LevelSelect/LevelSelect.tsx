@@ -19,36 +19,58 @@ function LevelSelect({globalState, setGlobalState}: any) {
     document.body.removeChild(link);
   };
 
-  const [file, setFile] = useState<File | null>(null);
+  // const [file, setFile] = useState<File | null>(null);
+  // const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  // const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files) {
+  //     const selectedFile = e.target.files[0];
+  //     setFile(selectedFile);
+      
+  //     await handleUpload(selectedFile);
+  //   }
+  // };
+
+  // const handleUpload = async (fileToUpload: File) => {
+  //   if (fileToUpload) {
+  //     console.log('Uploading file...');
+
+  //     const formData = new FormData();
+  //     formData.append('file', fileToUpload);
+
+  //     try {
+  //       const result = await fetch('https://httpbin.org/post', {
+  //         method: 'POST',
+  //         body: formData,
+  //       });
+
+  //       const data = await result.json();
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // };
+
+  // const handleButtonClick = () => {
+  //   fileInputRef.current?.click();
+  // };
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const selectedFile = e.target.files[0];
-      setFile(selectedFile);
       
-      await handleUpload(selectedFile);
-    }
-  };
-
-  const handleUpload = async (fileToUpload: File) => {
-    if (fileToUpload) {
-      console.log('Uploading file...');
-
-      const formData = new FormData();
-      formData.append('file', fileToUpload);
-
+      // Read and parse JSON file
+      const fileContent = await selectedFile.text();
       try {
-        const result = await fetch('https://httpbin.org/post', {
-          method: 'POST',
-          body: formData,
-        });
+        const parsedData = JSON.parse(fileContent);
 
-        const data = await result.json();
-        setGlobalState = getStateFromSerialized(data);
-        console.log(data);
+        // Set global state using parsed data
+        // setGlobalState(getStateFromSerialized(parsedData));
+        console.log('Loaded data:', getStateFromSerialized(parsedData));
       } catch (error) {
-        console.error(error);
+        console.error('Error parsing JSON:', error);
       }
     }
   };
