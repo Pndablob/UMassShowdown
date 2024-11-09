@@ -67,8 +67,8 @@ function LevelSelect({globalState, setGlobalState}: any) {
         const parsedData = JSON.parse(fileContent);
 
         // Set global state using parsed data
-        // setGlobalState(getStateFromSerialized(parsedData));
-        console.log('Loaded data:', getStateFromSerialized(parsedData));
+        setGlobalState(getStateFromSerialized(parsedData));
+        // console.log('Loaded data:', getStateFromSerialized(parsedData));
       } catch (error) {
         console.error('Error parsing JSON:', error);
       }
