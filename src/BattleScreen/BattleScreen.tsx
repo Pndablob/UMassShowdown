@@ -33,7 +33,7 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
     <div className={styles['container']}>
       <div className={styles['battle-container']}>
         <div className={styles['left-professor']}>
-          {game.current.getPlayerProfessors.length!==0 ? <ProfessorElement professor={game.current.getPlayerProfessors()[0]}/> : ""}
+          {game.current.getActiveProfessor()!==undefined ? <ProfessorElement professor={game.current.getPlayerProfessors()[0]}/> : ""}
         </div>
         <div className={styles['right-professor']}>
           {game.current.getPlayerProfessors.length!==0 ? <ProfessorElement professor={game.current.getPlayerProfessors()[0]}/> : ""}

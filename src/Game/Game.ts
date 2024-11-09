@@ -47,11 +47,16 @@ class Game {
     }
 
     public getActiveProfessor() {
-        return this.playerActiveProfessor;
+        // I changed this for testing. You can change it back if you're working on it
+        //return this.playerActiveProfessor;
+
+        return this.player.getProfessors()[0]
     }
 
     public getOpponentActiveProfessor() {
-        return this.opponentActiveProfessor;
+        //return this.opponentActiveProfessor;
+
+        return this.opponent.getProfessors()[0]
     }
 
     // UI sends engine an action
