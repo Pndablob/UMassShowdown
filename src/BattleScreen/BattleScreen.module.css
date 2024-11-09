@@ -1,0 +1,14 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.battle-container {
+  height: 85%;
+}
+
+.message-container {
+  height: 15%;
+  align-content: center;
+}
