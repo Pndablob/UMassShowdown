@@ -1,26 +1,26 @@
 class Move {
     private name: string;
-    private damage: number;
+    private power: number;
 
-    constructor(name: string, damage: number) {
+    constructor(name: string, power: number) {
         this.name = name;
-        this.damage = damage;
+        this.power = power;
     }
 
     public getName(): string {
         return this.name;
     }
 
-    public getDamage(): number {
-        return this.damage;
+    public getPower(): number {
+        return this.power;
     }
 
     public setName(name: string) {
         this.name = name;
     }
 
-    public setDamage(damage: number) {
-        this.damage = damage;
+    public setPower(power: number) {
+        this.power = power;
     }
 }
 

@@ -1,7 +1,8 @@
-class Barrington250 {
-    private name: string = "David Barrington";
-    private id: number;
-    private health: number;
-    private moves: Array<Move>;
-    private picture: string;
+export default {
+    name: "David Barrington",
+    attack: 0,
+    health: 0,
+    maxHealth: 0,
+    moves: [],
+    picture: "",
 }

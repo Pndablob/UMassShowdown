@@ -1,3 +1,8 @@
-import Professor from '../Professor';
-const prof = new Professor("Mark Wilson", 100, [], "");
-export default prof;
+export default {
+    name: "Mark Wilson",
+    attack: 0,
+    health: 0,
+    maxHealth: 0,
+    moves: [],
+    picture: "",
+}

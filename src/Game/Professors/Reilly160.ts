@@ -1,7 +1,8 @@
-class Reilly160 {
-    private name: string = "Cole Reilly";
-    private id: number;
-    private health: number;
-    private moves: Array<Move>;
-    private picture: string;
+export default {
+    name: "Cole Reilly",
+    attack: 0,
+    health: 0,
+    maxHealth: 0,
+    moves: [],
+    picture: "",
 }

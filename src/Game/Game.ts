@@ -26,8 +26,8 @@ class Game {
         }
 
         // get professors from course
-        let professors = course.getProfessors();
-
+        let professorsTemplates = course.getProfessors();
+        let professors = professorsTemplates.map(professorTemplate => new Professor(professorTemplate));
         this.opponent = new Player(professors, []);
 
         // start battle by calling initBattle

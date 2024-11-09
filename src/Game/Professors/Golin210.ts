@@ -1,7 +1,8 @@
-class Golin210 {
-    private name: string = "Mordecai Golin";
-    private id: number;
-    private health: number;
-    private moves: Array<Move>;
-    private picture: string;
+export default {
+    name: "Mordecai Golin",
+    attack: 0,
+    health: 0,
+    maxHealth: 0,
+    moves: [],
+    picture: "",
 }

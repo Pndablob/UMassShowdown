@@ -1,7 +1,8 @@
-class Davila160 {
-    private name: string = "Jaime Davila";
-    private id: number;
-    private health: number;
-    private moves: Array<Move>;
-    private picture: string;
+export default {
+    name: "Jaime Davila",
+    attack: 0,
+    health: 0,
+    maxHealth: 0,
+    moves: [],
+    picture: "",
 }

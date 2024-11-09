@@ -1,7 +1,8 @@
-class Bovornkeeratiroj230 {
-    private name: string = "Nikko Bovornkeeratiroj";
-    private id: number;
-    private health: number;
-    private moves: Array<Move>;
-    private picture: string;
+export default {
+    name: "Nikko Bovornkeeratiroj",
+    attack: 0,
+    health: 0,
+    maxHealth: 0,
+    moves: [],
+    picture: "",
 }
