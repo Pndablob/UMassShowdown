@@ -3,8 +3,8 @@ import Move from "./MoveTemplate";
 interface ProfessorTemplate {
     name: string;
     attack: number;
-    health: number;
     maxHealth: number;
+    defense: number;
     moves: Move[];
     picture: string;
     id: number;

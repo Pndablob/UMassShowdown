@@ -6,6 +6,7 @@ class Professor {
     private attack: number;
     private health: number;
     private maxHealth: number;
+    private defense: number;
     private moves: Move[];
     private picture: string;
 
@@ -13,8 +14,9 @@ class Professor {
     constructor(template: ProfessorTemplate) {
         this.name = template.name;
         this.attack = template.attack;
-        this.health = template.health;
-        this.maxHealth = template.health;
+        this.health = template.maxHealth;
+        this.maxHealth = template.maxHealth;
+        this.defense = template.defense;
         this.moves = template.moves;
         this.picture = template.picture;
     }

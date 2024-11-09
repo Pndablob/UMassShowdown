@@ -5,7 +5,6 @@ import Abstraction from "../Moves/Abstraction";
 const prof = {
     name: "Marius Minea",
     attack: 0,
-    health: 0,
     maxHealth: 0,
     moves: [Exam, Abstraction],
     picture: image,

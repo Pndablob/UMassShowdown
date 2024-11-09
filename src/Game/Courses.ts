@@ -17,15 +17,14 @@ import Sheldon311 from "./Professors/Sheldon311"
 import Wilson240 from "./Professors/Wilson240"
 import Davila220 from "./Professors/Davila220"
 
-let map: Map<string, Course> = new Map(Object.entries({
-    110: new Course([], "CICS 110"),
-    160: new Course([Davila160, Reilly160], "CICS 160"),
-    210: new Course([Golin210, Liberatore210, Richards210], "CICS 210"),
-    220: new Course([Minea220, Davila220, Minea220], "CS 220"),
-    240: new Course([Lan240, Wilson240, Lan240, Wilson240], "CS 240"),
-    230: new Course([Chiu230, Bovornkeeratiroj230, Chiu230], "CS 230"),
-    250: new Course([Barrington250, Golin250], "CS 250"), // miniboss
-    311: new Course([Minea311, Parvini311, Sheldon311], "CS 311"), // final boss
-}))
+let map: Map<string, Course> = new Map();
+map.set("110", new Course([], "CICS 110"));
+map.set("160", new Course([Davila160, Reilly160], "CICS 160"));
+map.set("210", new Course([Golin210, Liberatore210, Richards210], "CICS 210"));
+map.set("220", new Course([Minea220, Davila220, Minea220], "CS 220")); // miniboss
+map.set("240", new Course([Lan240, Wilson240, Lan240, Wilson240], "CS 240"));
+map.set("230", new Course([Chiu230, Bovornkeeratiroj230, Chiu230], "CS 230"));
+map.set("250", new Course([Barrington250, Golin250], "CS 250")); // miniboss
+map.set("311", new Course([Minea311, Parvini311, Sheldon311], "CS 311")); // final boss
 
 export default map;

@@ -2,9 +2,9 @@ import image from '../../Assets/Anderson.jpeg';
 
 const prof = {
     name: "Emma Anderson",
-    attack: 0,
-    health: 0,
-    maxHealth: 0,
+    attack: 80,
+    maxHealth: 250,
+    defense: 50,
     moves: [],
     picture: image,
     id: 0,
