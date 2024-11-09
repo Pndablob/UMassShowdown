@@ -1,9 +1,41 @@
 .container {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction:row;
 }
 
 .header {
   text-align: center;
   font-family: PixeloidMono;
 }
+
+.left-container {
+  width: 55%;
+  height: 100%;
+  margin: 0;
+  border-style: solid;
+  border-color: black;
+}
+
+.right-container {
+  width: 45%;
+  height: 100%;
+  margin: 0;
+  border-style: solid;
+  border-color: black;
+}
+
+.message-container {
+  height: 15%;
+  align-content: center;
+  width: 100%;
+}
+
+.professor-container {
+  overflow-y: scroll;
+  height: 85%;
+  width: 100%;
+  margin: 0 auto;
+}
+

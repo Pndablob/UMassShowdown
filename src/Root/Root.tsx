@@ -8,12 +8,13 @@ import LevelSelect from '../LevelSelect/LevelSelect';
 import TeamSelect from '../TeamSelectScreen/TeamSelectScreen';
 import GlobalState from '../GlobalState/GlobalState';
 
-import Anderson0 from '../Game/Professors/Anderson0';
+import Marius220 from '../Game/Professors/Minea220';
+import Golin250 from '../Game/Professors/Golin250';
 
 export default function Root() {
   const [globalState, setGlobalState] = useState<GlobalState>({
     levelsUnlocked: ["110"],
-    charactersUnlocked: [Anderson0],
+    charactersUnlocked: [Marius220, Golin250],
   });
 
  const router = useMemo(() => {

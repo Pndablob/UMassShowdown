@@ -1,0 +1,21 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction:row;
+}
+
+.header {
+  text-align: center;
+  font-family: PixeloidMono;
+}
+
+.left-container {
+  width: 60%;
+  height: 100%;
+}
+
+.right-container {
+  width: 40%;
+  height: 100%;
+}
