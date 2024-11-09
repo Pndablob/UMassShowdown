@@ -1,7 +1,26 @@
 .custom-carousel {
+    display: flex;
     border: 2px solid black;
     width: 50%;
     height: 500px;
     margin-left: 25%;
     margin-right: 25%;
+}
+
+.carousel-inner {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 25%;
+    height: 25%;
+    margin: auto;
+    border: 2px solid black;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 16 16'%3E%3Cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
 }
