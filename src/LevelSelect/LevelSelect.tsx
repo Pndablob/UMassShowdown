@@ -82,7 +82,7 @@ function LevelSelect({globalState, setGlobalState}: any) {
   return (
     <div>
         <h1 className='level-select-title'>UMass Showdown</h1>
-        <ImageCarousel/>
+        <ImageCarousel globalState={globalState} setGlobalState={setGlobalState}/>
         <input
           ref={fileInputRef}
           type="file"

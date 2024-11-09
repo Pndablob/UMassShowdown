@@ -9,6 +9,7 @@ import RetroButtonJSON from '../RetroButton/RetroButtonJSON';
 
 function ImageCarousel({globalState, setGlobalState}: any) {
   const [index, setIndex] = useState(0);
+  const levels = globalState.levelsUnlocked;
 
   const handleSelect = (selectedIndex: SetStateAction<number>) => {
     setIndex(selectedIndex);
@@ -20,15 +21,19 @@ function ImageCarousel({globalState, setGlobalState}: any) {
   }
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect} interval={null} indicators={false} className='custom-carousel'>
+    <Carousel activeIndex={index} onSelect={handleSelect} interval={null} indicators={false} className='custom-carousel' style={{
+      backgroundColor: levels.includes(Array.from(map.keys())[index]) ? 'white' : 'gray',
+    }}>
       {Array.from(map.keys()).map((key) => (
         <Carousel.Item key={key}>
           <NameComponent className='curr-class' name={`CS ${key}`}/>
         </Carousel.Item>
       ))}
-      <div className='start-btn'>
-        <RetroButtonJSON onClick={handleClick}>start</RetroButtonJSON>
-      </div>
+      {levels.includes(Array.from(map.keys())[index]) && (
+          <div className="start-btn">
+            <RetroButtonJSON onClick={handleClick}>start</RetroButtonJSON>
+          </div>
+        )}
     </Carousel>
   );
 }
