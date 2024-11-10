@@ -1,5 +1,5 @@
 import image from '../../Assets/Lan.jpeg';
-import BayesRule from '../Moves/Abstraction';
+import BayesRuler from '../Moves/Abstraction';
 import Exam from '../Moves/Exam';
 import CountingCards from '../Moves/Homework';
 import MarkovChain from '../Moves/MarkovChain';
@@ -9,7 +9,7 @@ const prof = {
     attack: 90,
     maxHealth: 240,
     defense: 80,
-    moves: [CountingCards, BayesRule, MarkovChain, Exam],
+    moves: [CountingCards, BayesRuler, MarkovChain, Exam],
     picture: image,
     id: 7,
 }

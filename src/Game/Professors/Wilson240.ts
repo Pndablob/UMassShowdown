@@ -1,7 +1,7 @@
 import image from "../../Assets/Wilson.jpeg";
 import Exam from "../Moves/Exam";
 import NegativeCurve from "../Moves/NegativeCurve";
-import BayesRule from "../Moves/BayesRule";
+import BayesRule from "../Moves/BayesRuler";
 import MarkovChain from "../Moves/MarkovChain";
 
 const prof = {

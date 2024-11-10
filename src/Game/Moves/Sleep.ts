@@ -1,6 +1,3 @@
-import Battle from "../Battle";
-import Professor from "../Professor";
-
 let move = {
     name: "Sleep",
     power: 0,

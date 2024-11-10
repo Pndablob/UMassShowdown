@@ -2,13 +2,14 @@ import image from '../../Assets/Golin.jpeg';
 import Exam from '../Moves/Exam';
 import HeapHammer from '../Moves/HeapHammer';
 import SortingStrike from '../Moves/SortingStrike';
+import UnionFind from '../Moves/UnionFiend';
 
 const prof = {
     name: "Mordecai Golin (210)",
     attack: 60,
     maxHealth: 210,
     defense: 70,
-    moves: [Exam, SortingStrike, HeapHammer],
+    moves: [Exam, SortingStrike, HeapHammer, UnionFind],
     picture: image,
     id: 5,
 };

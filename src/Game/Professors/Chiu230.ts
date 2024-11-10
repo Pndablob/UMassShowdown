@@ -1,7 +1,7 @@
 import image from '../../Assets/Chiu.jpeg';
 import CIsAwesome from '../Moves/CIsAwesome';
 import YoutubeChannel from '../Moves/YoutubeChannel';
-import Snorlax from '../Moves/Snorlax';
+import SnorlaxSuperpower from '../Moves/SnorlaxSuperpower';
 import SystemSlam from '../Moves/SystemSlam';
 
 const prof = {
@@ -9,7 +9,7 @@ const prof = {
     attack: 90,
     maxHealth: 230,
     defense: 70,
-    moves: [YoutubeChannel, SystemSlam, Snorlax, CIsAwesome],
+    moves: [YoutubeChannel, SystemSlam, SnorlaxSuperpower, CIsAwesome],
     picture: image,
     id: 3,
 }

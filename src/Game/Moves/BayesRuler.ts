@@ -1,5 +1,5 @@
 let move = {
-    name: "Bayes Rule",
+    name: "Bayes' Rule(r)",
     power: 30,
     critChance: 0.25,
     critMultiplier: 2,
