@@ -25,9 +25,11 @@ export default function Profile({prof, team, removeMode, isEnabled, update}: Pro
         isEnabled ? 
           <div className={styles['container']} onClick={clickHandler}>
             <img className={styles['image']} src={prof.picture} alt={prof.name}/>
+            <div className={styles['text']}>{prof.name}</div>
           </div> 
           : <div className={styles['disabled-container']} onClick={clickHandler}>
             <img className={styles['image']} src={prof.picture} alt={prof.name}/>
+            <div className={styles['text']}>{prof.name}</div>
           </div>
     }
   </>
