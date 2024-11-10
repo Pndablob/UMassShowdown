@@ -80,7 +80,7 @@ class Battle {
             moveIndex: this.getRandomNumber(0, this.opponent.getProfessors()[this.opponentActiveProfessorIndex].getMoves().length - 1)
         });
 
-        // randomly shuffle actionStack
+        
         this.actionStack.sort(() => Math.random() - 0.5);
 
         return this.gameLoop()

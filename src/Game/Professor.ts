@@ -7,7 +7,6 @@ class Professor {
     private health: number;
     private maxHealth: number;
     private defense: number;
-    private speed?: number;
     private moves: Move[];
     private picture: string;
 
@@ -18,7 +17,6 @@ class Professor {
         this.health = template.maxHealth;
         this.maxHealth = template.maxHealth;
         this.defense = template.defense;
-        this.speed = template.speed;
         this.moves = template.moves;
         this.picture = template.picture;
     }
@@ -47,6 +45,10 @@ class Professor {
 
     public getMaxHealth(): number {
         return this.maxHealth;
+    }
+
+    public getDefense(): number {
+        return this.defense;
     }
 
     public getMoves(): Move[] {
