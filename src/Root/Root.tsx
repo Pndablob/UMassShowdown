@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   RouterProvider,
   createBrowserRouter,
@@ -19,6 +19,24 @@ export default function Root() {
     levelsBeaten: []
   });
 
+  const audioRef = useRef(new Audio(`${process.env.PUBLIC_URL}/audio/CICSShowdown.wav`));
+
+  useEffect(() => {
+    audioRef.current.loop = true;
+
+    const startAudio = () => {
+      audioRef.current.play().catch((error) => {
+        console.error('Autoplay was prevented:', error);
+      });
+
+      document.removeEventListener('click', startAudio);
+    };
+
+    document.addEventListener('click', startAudio);
+
+    return () => document.removeEventListener('click', startAudio);
+  }, []);
+
  const router = useMemo(() => {
   return createHashRouter([
     {
@@ -38,7 +56,7 @@ export default function Root() {
 
   return (
     //<React.StrictMode>
-     <RouterProvider router={router}/>
+    <RouterProvider router={router}/>
     //</React.StrictMode>
   )
 }
