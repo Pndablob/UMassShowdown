@@ -77,7 +77,7 @@ class Battle {
         this.actionStack.push({
             isPlayer: false,
             type: ActionType.ATTACK,
-            moveIndex: this.getRandomNumber(0, this.opponent.getProfessors()[0].getMoves().length - 1)
+            moveIndex: this.getRandomNumber(0, this.opponent.getProfessors()[this.opponentActiveProfessorIndex].getMoves().length - 1)
         });
 
         // randomly shuffle actionStack

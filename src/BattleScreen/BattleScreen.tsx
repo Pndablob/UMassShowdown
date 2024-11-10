@@ -49,15 +49,12 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
   const updateScreen = () => {
     if (game.current.isGameOver() !== 0) {
-      console.log("Game over");
-
       if (game.current.isGameOver() === 1) {
         setOppProf(undefined);
       } else {
         setActiveProf(undefined);
       }
     } else {
-      console.log("Game not over");
       setOppProf(game.current.getOpponentActiveProfessor().copy());
       setActiveProf(game.current.getActiveProfessor().copy());
     }
