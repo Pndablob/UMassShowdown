@@ -107,6 +107,8 @@ class Battle {
 
                     let crit = Math.random() < (move.critChance ? move.critChance : 0.1); // 10% chance (or given) of critical hit
                     playerActiveProfessor.attackOpponent(opponentActiveProfessor, move, crit);
+                    playerActiveProfessor.heal(move.healing ? move.healing : 0);
+                    playerActiveProfessor.takeDamage(move.selfHarm ? move.selfHarm : 0);
 
                     this.dialogue.addText(`${playerActiveProfessor.getName()} used ${move.name}!`);
                     if (crit) {
@@ -138,6 +140,8 @@ class Battle {
 
                     let crit = Math.random() < (move.critChance ? move.critChance : 0.1); // 10% chance (or given) of critical hit
                     opponentActiveProfessor.attackOpponent(playerActiveProfessor, move, crit);
+                    opponentActiveProfessor.heal(move.healing ? move.healing : 0);
+                    opponentActiveProfessor.takeDamage(move.selfHarm ? move.selfHarm : 0);
 
                     this.dialogue.addText(`${opponentActiveProfessor.getName()} used ${move.name}!`);
                     if (crit) {

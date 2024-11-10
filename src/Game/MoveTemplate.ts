@@ -6,6 +6,7 @@ interface Move {
     critChance?: number;
     critMultiplier?: number;
     healing?: number;
+    selfHarm?: number;
 }
 
 export default Move;
