@@ -1,6 +1,6 @@
 let move = {
     name: "Snorlax",
-    power: 80,
+    power: 100,
 }
 
 export default move;

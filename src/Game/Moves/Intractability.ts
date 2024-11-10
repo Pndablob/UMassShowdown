@@ -1,6 +1,6 @@
 let move = {
     name: "Intractability",
-    power: 40,
+    power: 90,
 }
 
 export default move;

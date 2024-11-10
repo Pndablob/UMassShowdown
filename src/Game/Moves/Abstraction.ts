@@ -1,6 +1,6 @@
 let move = {
     name: "Abstraction",
-    power: 40,
+    power: 70,
 }
 
 export default move;

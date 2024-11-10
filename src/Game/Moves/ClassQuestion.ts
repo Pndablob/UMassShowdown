@@ -1,6 +1,6 @@
 let move = {
     name: "Class Question",
-    power: 60,
+    power: 70,
 }
 
 export default move;

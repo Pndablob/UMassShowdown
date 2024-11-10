@@ -5,7 +5,7 @@ import RecursiveRampage from '../Moves/RecursiveRampage';
 
 const prof = {
     name: "Ghazaleh Parvini",
-    attack: 60,
+    attack: 50,
     maxHealth: 311,
     defense: 80,
     moves: [Exam, RecursiveRampage, Intractability],

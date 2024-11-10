@@ -1,5 +1,5 @@
 let move = {
-    name: "Sorting Strike",
+    name: "JavaScript Jab",
     power: 50,
 }
 

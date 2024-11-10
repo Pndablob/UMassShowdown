@@ -1,13 +1,14 @@
 import image from '../../Assets/Davila.jpeg';
 import Abstraction from '../Moves/Abstraction';
-import RecursiveRampage from '../Moves/RecursiveRampage';
+import Homework from '../Moves/Homework';
+import IntimidatingInterface from '../Moves/IntimidatingInterface';
 
 const prof = {
     name: "Jaime Davila",
-    attack: 70,
+    attack: 60,
     maxHealth: 160,
-    defense: 60,
-    moves: [Abstraction, RecursiveRampage],
+    defense: 50,
+    moves: [Abstraction, Homework, IntimidatingInterface],
     picture: image,
     id: 4,
 }

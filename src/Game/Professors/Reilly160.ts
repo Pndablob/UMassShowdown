@@ -4,9 +4,9 @@ import SortingStrike from '../Moves/SortingStrike';
 
 const prof = {
     name: "Cole Reilly",
-    attack: 60,
+    attack: 50,
     maxHealth: 160,
-    defense: 80,
+    defense: 70,
     moves: [Homework, SortingStrike],
     picture: image,
     id: 12,

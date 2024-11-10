@@ -1,5 +1,5 @@
 let move = {
-    name: "Hello Friends",
+    name: "Marius Exam",
     power: 100,
 }
 
