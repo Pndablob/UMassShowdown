@@ -93,7 +93,7 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
   useEffect(()=>{
     const onEnter = (event: KeyboardEvent)=> {
-      if (event.key !== "Enter") return;
+      if (event.key !== "Enter" && event.key !== " ") return;
       if (mode === InfoBoxMode.MESSAGE) {
         if (textRemaining) {
           let isTextRemaining = dialogue.current.getText(setDialogueText);
