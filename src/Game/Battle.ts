@@ -100,7 +100,7 @@ class Battle {
                     this.playerActiveProfessorIndex += 1;
 
                     if (!this.isGameOver()) {
-                        this.dialogue.addText(`You sent out <b>${this.getActiveProfessor().getName()}</b>`);
+                        this.dialogue.addText(`You send out ${this.getActiveProfessor().getName()}`);
                     }
                 } else {
                     this.opponentActiveProfessorIndex += 1;
@@ -146,6 +146,10 @@ class Battle {
 
                 this.dialogue.addText(`${opponentActiveProfessor.getName()} used ${move.name}!`);
 
+                if (crit) {
+                    this.dialogue.addText("It's a critical hit!");
+                }
+
                 // check if player professor is defeated and switch to next professor
                 if (playerActiveProfessor.getHealth() <= 0) {
                     // remove defeated professor action from stack
@@ -160,9 +164,7 @@ class Battle {
                     this.dialogue.addText(`${playerActiveProfessor.getName()} fainted!`);
                 }
 
-                if (crit) {
-                    this.dialogue.addText("It's a critical hit!");
-                }
+                
             }
         }
 
