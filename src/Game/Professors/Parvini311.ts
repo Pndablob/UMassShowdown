@@ -6,7 +6,7 @@ import DivideAndConquer from '../Moves/DivideAndConquer';
 
 const prof = {
     name: "Ghazaleh Parvini",
-    attack: 50,
+    attack: 70,
     maxHealth: 311,
     defense: 80,
     moves: [Exam, RecursiveRampage, Intractability, DivideAndConquer],

@@ -5,7 +5,7 @@ import OfficeHours from '../Moves/OfficeHours';
 
 const prof = {
     name: "Ghazaleh Parvini",
-    attack: 50,
+    attack: 60,
     maxHealth: 160,
     defense: 60,
     moves: [Exam, ClassClash, OfficeHours],

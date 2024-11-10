@@ -5,8 +5,8 @@ import FirstYearSeminar from '../Moves/FirstYearSeminar';
 
 const prof = {
     name: "Emma Anderson",
-    attack: 80,
-    maxHealth: 250,
+    attack: 55,
+    maxHealth: 200,
     defense: 50,
     moves: [UCAReinforcements, Sleep, FirstYearSeminar],
     picture: image,

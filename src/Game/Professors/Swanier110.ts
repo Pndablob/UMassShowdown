@@ -7,7 +7,7 @@ import Exam from '../Moves/Exam';
 const prof = {
     name: "Cheryl Swanier",
     attack: 50,
-    maxHealth: 160,
+    maxHealth: 175,
     defense: 50,
     moves: [Homework, OfficeHours, Exam],
     picture: image,

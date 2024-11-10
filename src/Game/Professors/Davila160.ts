@@ -7,7 +7,7 @@ import MergeSort from '../Moves/MergeSort';
 const prof = {
     name: "Jaime Davila (160)",
     attack: 60,
-    maxHealth: 160,
+    maxHealth: 175,
     defense: 50,
     moves: [Abstraction, Homework, IntimidatingInterface, MergeSort],
     picture: image,
