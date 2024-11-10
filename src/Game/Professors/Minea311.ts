@@ -8,7 +8,7 @@ const prof = {
     name: "Marius Minea (311)",
     attack: 90,
     maxHealth: 311,
-    defense: 60,
+    defense: 65,
     moves: [MariusExam, RecursiveRampage, Intractability, PiazzaPrince],
     picture: image,
     id: 10,

@@ -1,8 +1,8 @@
 let move = {
     name: "First Year Seminar",
-    power: 40,
-    critChance: 0.1,
-    critMultiplier: 1.25,
+    power: 45,
+    critChance: 0.15,
+    critMultiplier: 1.3,
     healing: 10,
 }
 
