@@ -121,7 +121,12 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
           <div className={styles['player-info-left']}>
             { game.current.getPlayerProfessors().map((prof: Professor)=>{
               return <div key={prof.getName()} className={styles['small-image-container']}>
-                <img alt={prof.getName()} src={prof.getPicture()} className={styles['small-image']}/>
+                <img 
+                  alt={prof.getName()} 
+                  src={prof.getPicture()} 
+                  className={styles['small-image']}
+                  style={{opacity: prof.getHealth()<=0 ? 0.3 : 1}}
+                />
               </div>
             })}
           </div>
