@@ -25,7 +25,7 @@ function ImageCarousel({globalState, setGlobalState}: any) {
         </Carousel.Item>
       ))}
       <div className="start-btn">
-          <RetroButton to='/teamSelect' state={globalState} disabled={levels.includes(Array.from(map.keys())[index]) ? false : true}>
+          <RetroButton to='/teamSelect' state={{opponent: Array.from(map.keys())[index]}} disabled={levels.includes(Array.from(map.keys())[index]) ? false : true}>
             {levels.includes(Array.from(map.keys())[index]) ? 'Start' : 'Not Unlocked'}
           </RetroButton>
         </div>

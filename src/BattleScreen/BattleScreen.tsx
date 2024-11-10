@@ -30,7 +30,6 @@ export interface BattleInitArgs {
 }
 
 function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
-
   const navigate = useNavigate();
 
   const location: Location = useLocation();

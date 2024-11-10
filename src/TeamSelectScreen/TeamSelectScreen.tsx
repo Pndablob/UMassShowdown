@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import RetroLink from '../RetroButton/RetroLink';
 import styles from './TeamSelectScreen.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BattleInitArgs } from '../BattleScreen/BattleScreen';
 import Anderson0 from '../Game/Professors/Anderson0';
 import GlobalState from '../GlobalState/GlobalState';
@@ -14,11 +14,20 @@ interface TeamSelectArgs {
   setGlobalState: Dispatch<SetStateAction<GlobalState>>;
 }
 
+export interface TeamInitArgs {
+  opponent: string;
+}
+
 function TeamSelect({globalState, setGlobalState}: TeamSelectArgs) {
+
+  const location = useLocation();
+
+  const state: TeamInitArgs = location.state;
+  console.log(state);
 
   const myTeam = useRef<ProfessorTemplate[]>([]);
   let battleInitState: BattleInitArgs = {
-    opponent: "160",
+    opponent: state.opponent,
     professorsChosen: myTeam.current
   }
 
