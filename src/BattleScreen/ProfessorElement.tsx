@@ -12,7 +12,7 @@ export default function ProfessorElement({professor}: {professor: Professor}) {
       <div className={styles['health-bar']} style={{width: `${health}%`}}></div>
     </div>
     <div className={styles['professor-image-container']}>
-      <img alt={professor.getName()} src={professor.getPicture()} />
+      <img className={styles['professor-image']} alt={professor.getName()} src={professor.getPicture()} />
     </div>
   </div>
 };

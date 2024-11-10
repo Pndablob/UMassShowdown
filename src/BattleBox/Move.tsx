@@ -9,6 +9,6 @@ export interface Move {
 
 export default function MoveElement({move}: {move: Move|undefined}) {
   return move && !move.disabled ? 
-    <div className={styles['move']} onClick={move.callback} style={{backgroundColor: move.color}} >{move.name}</div> :
+    <div className={styles['move']} onClick={move.callback} style={{backgroundColor: move.color}}><p>{move.name}</p></div> :
     <div className={styles['disabled-move']}></div>
 }
