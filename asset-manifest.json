@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a4711fd0.css",
+    "main.js": "/static/js/main.54e3936d.js",
+    "static/js/453.ed3810f9.chunk.js": "/static/js/453.ed3810f9.chunk.js",
+    "static/media/Sheldon.jpeg": "/static/media/Sheldon.1506575b4b6569ef43ae.jpeg",
+    "static/media/Davila.jpeg": "/static/media/Davila.ed7d3f3d7b26794d513c.jpeg",
+    "static/media/Anderson.jpeg": "/static/media/Anderson.cd4b051d8e7c0f23635b.jpeg",
+    "static/media/Golin.jpeg": "/static/media/Golin.57dc134a7eac7c845c9a.jpeg",
+    "static/media/Chiu.jpeg": "/static/media/Chiu.5d6de095d0921e74edfa.jpeg",
+    "static/media/PixeloidMono.ttf": "/static/media/PixeloidMono.204f6923c85ff2d9535b.ttf",
+    "static/media/Barrington.jpeg": "/static/media/Barrington.8167eae415d951baf74a.jpeg",
+    "static/media/Wilson.jpeg": "/static/media/Wilson.437dd96fcb6f86dd87a8.jpeg",
+    "static/media/Lan.jpeg": "/static/media/Lan.128b4dd4092138f0e26b.jpeg",
+    "static/media/Richards.jpeg": "/static/media/Richards.353e5aa7c20ddcd6d91a.jpeg",
+    "static/media/Parvini.jpeg": "/static/media/Parvini.c9bd7c77b99b59923f5b.jpeg",
+    "static/media/Reilly.jpeg": "/static/media/Reilly.a0624b9ab4ffd662e0c0.jpeg",
+    "static/media/Minea.jpeg": "/static/media/Minea.71849c061c5ec8ccad37.jpeg",
+    "static/media/Liberatore.jpeg": "/static/media/Liberatore.2a28a199414f579dfa10.jpeg",
+    "static/media/Haas.jpeg": "/static/media/Haas.b4bdc278ae1c5e60e9c7.jpeg",
+    "static/media/Swanier.jpeg": "/static/media/Swanier.82d9d95f68ce1c162c58.jpeg",
+    "static/media/Bovornkeeratiroj.jpeg": "/static/media/Bovornkeeratiroj.711b35960f8b11f843c8.jpeg",
+    "index.html": "/index.html",
+    "main.a4711fd0.css.map": "/static/css/main.a4711fd0.css.map",
+    "main.54e3936d.js.map": "/static/js/main.54e3936d.js.map",
+    "453.ed3810f9.chunk.js.map": "/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a4711fd0.css",
+    "static/js/main.54e3936d.js"
+  ]
+}
