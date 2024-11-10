@@ -1,6 +1,6 @@
 let move = {
     name: "Homework",
-    power: 20,
+    power: 25,
 }
 
 export default move;

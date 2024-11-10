@@ -7,6 +7,7 @@ class Professor {
     private health: number;
     private maxHealth: number;
     private defense: number;
+    private speed?: number;
     private moves: Move[];
     private picture: string;
 
@@ -17,21 +18,14 @@ class Professor {
         this.health = template.maxHealth;
         this.maxHealth = template.maxHealth;
         this.defense = template.defense;
+        this.speed = template.speed;
         this.moves = template.moves;
         this.picture = template.picture;
     }
 
     public attackOpponent(opponent: Professor, move: Move, crit: boolean) {
         // calculate damage = power * attack * critical chance (1.25 modifier 10% of the time) * random modifier (0.85 - 1.0) / defense
-        console.log("Attacking with move: " + move.name);
-        console.log("Opponent health before: " + opponent.health);
-        console.log("Opponent defense: " + opponent.defense);
-        console.log("Opponent attack: " + opponent.attack);
-        
-        let damage = move.power * this.attack * (crit ? 1.25: 1) * (Math.random() * 0.15 + 0.85) / opponent.defense;
-
-        console.log("Damage: " + damage);
-
+        let damage = move.power * this.attack * (crit ? (move.critMultiplier ? move.critMultiplier : 1.25) : 1) * (Math.random() * 0.15 + 0.85) / opponent.defense;
         opponent.takeDamage(damage);
     }
 

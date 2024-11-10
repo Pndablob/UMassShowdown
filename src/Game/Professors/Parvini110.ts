@@ -7,10 +7,10 @@ const prof = {
     name: "Ghazaleh Parvini",
     attack: 50,
     maxHealth: 160,
-    defense: 80,
+    defense: 60,
     moves: [Exam, RecursiveRampage, Intractability],
     picture: image,
-    id: 11,
+    id: 19,
 }
 
 export default prof;

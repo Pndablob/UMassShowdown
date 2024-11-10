@@ -5,6 +5,7 @@ interface ProfessorTemplate {
     attack: number;
     maxHealth: number;
     defense: number;
+    speed?: number;
     moves: Move[];
     picture: string;
     id: number;

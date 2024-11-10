@@ -101,7 +101,11 @@ class Battle {
                     let playerActiveProfessor = this.player.getProfessors()[this.playerActiveProfessorIndex];
                     let opponentActiveProfessor = this.opponent.getProfessors()[this.opponentActiveProfessorIndex];
                     let move = playerActiveProfessor.getMoves()[action.moveIndex];
-                    let crit = Math.random() < 0.1; // 10% chance of critical hit
+                    if (move === undefined) {
+                        throw new Error("Player professor has no moves");
+                    }
+
+                    let crit = Math.random() < (move.critChance ? move.critChance : 0.1); // 10% chance (or given) of critical hit
                     playerActiveProfessor.attackOpponent(opponentActiveProfessor, move, crit);
 
                     this.dialogue.addText(`${playerActiveProfessor.getName()} used ${move.name}!`);
@@ -128,7 +132,11 @@ class Battle {
                     let opponentActiveProfessor = this.opponent.getProfessors()[this.opponentActiveProfessorIndex];
                     let playerActiveProfessor = this.player.getProfessors()[this.playerActiveProfessorIndex];
                     let move = opponentActiveProfessor.getMoves()[action.moveIndex];
-                    let crit = Math.random() < 0.1; // 10% chance of critical hit
+                    if (move === undefined) {
+                        throw new Error("Opponent professor has no moves");
+                    }
+
+                    let crit = Math.random() < (move.critChance ? move.critChance : 0.1); // 10% chance (or given) of critical hit
                     opponentActiveProfessor.attackOpponent(playerActiveProfessor, move, crit);
 
                     this.dialogue.addText(`${opponentActiveProfessor.getName()} used ${move.name}!`);

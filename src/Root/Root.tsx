@@ -17,7 +17,7 @@ import Marius311 from '../Game/Professors/Minea311';
 export default function Root() {
   const [globalState, setGlobalState] = useState<GlobalState>({
     levelsUnlocked: ["110"],
-    charactersUnlocked: [Anderson0, Haas0, Marius220, Marius311],
+    charactersUnlocked: [Anderson0, Haas0],
   });
 
  const router = useMemo(() => {
