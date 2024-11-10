@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/UMassShowdown/static/css/main.8737f40a.css",
-    "main.js": "/UMassShowdown/static/js/main.39d8ce7c.js",
+    "main.js": "/UMassShowdown/static/js/main.c66b06d9.js",
     "static/js/453.ed3810f9.chunk.js": "/UMassShowdown/static/js/453.ed3810f9.chunk.js",
     "static/media/Sheldon.jpeg": "/UMassShowdown/static/media/Sheldon.1506575b4b6569ef43ae.jpeg",
     "static/media/Davila.jpeg": "/UMassShowdown/static/media/Davila.ed7d3f3d7b26794d513c.jpeg",
@@ -22,11 +22,11 @@
     "static/media/Bovornkeeratiroj.jpeg": "/UMassShowdown/static/media/Bovornkeeratiroj.711b35960f8b11f843c8.jpeg",
     "index.html": "/UMassShowdown/index.html",
     "main.8737f40a.css.map": "/UMassShowdown/static/css/main.8737f40a.css.map",
-    "main.39d8ce7c.js.map": "/UMassShowdown/static/js/main.39d8ce7c.js.map",
+    "main.c66b06d9.js.map": "/UMassShowdown/static/js/main.c66b06d9.js.map",
     "453.ed3810f9.chunk.js.map": "/UMassShowdown/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8737f40a.css",
-    "static/js/main.39d8ce7c.js"
+    "static/js/main.c66b06d9.js"
   ]
 }
