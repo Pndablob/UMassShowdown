@@ -1,6 +1,6 @@
 let move = {
     name: "Dynamic Pounding",
-    power: 50,
+    power: 75,
 }
 
 export default move;

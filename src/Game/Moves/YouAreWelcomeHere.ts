@@ -1,6 +1,6 @@
 let move = {
     name: "You Are Welcome Here",
-    power: 10,
+    power: 15,
     critChance: 0.75,
     critMultiplier: 7,
 }

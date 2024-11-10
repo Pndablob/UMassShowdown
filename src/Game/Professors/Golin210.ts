@@ -6,9 +6,9 @@ import UnionFind from '../Moves/UnionFiend';
 
 const prof = {
     name: "Mordecai Golin (210)",
-    attack: 60,
+    attack: 55,
     maxHealth: 210,
-    defense: 70,
+    defense: 65,
     moves: [Exam, SortingStrike, HeapHammer, UnionFind],
     picture: image,
     id: 5,
