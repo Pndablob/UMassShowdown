@@ -1,5 +1,4 @@
 import { SetStateAction, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NameComponent from './NameComponent';
