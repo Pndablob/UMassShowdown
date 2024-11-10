@@ -10,12 +10,14 @@ import GlobalState from '../GlobalState/GlobalState';
 
 import Haas0 from '../Game/Professors/Haas0';
 import Anderson0 from '../Game/Professors/Anderson0';
+import Marius220 from '../Game/Professors/Minea220';
+import Marius311 from '../Game/Professors/Minea311';
 
 
 export default function Root() {
   const [globalState, setGlobalState] = useState<GlobalState>({
     levelsUnlocked: ["110"],
-    charactersUnlocked: [Anderson0, Haas0],
+    charactersUnlocked: [Anderson0, Haas0, Marius220, Marius311],
   });
 
  const router = useMemo(() => {

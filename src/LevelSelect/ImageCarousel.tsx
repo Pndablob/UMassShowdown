@@ -22,13 +22,11 @@ function ImageCarousel({globalState, setGlobalState}: any) {
       {Array.from(map.keys()).map((key) => (
         <Carousel.Item key={key}>
           <NameComponent className='curr-class' name={`CS ${key}`}/>
-        </Carousel.Item>
-      ))}
-      <div className="start-btn">
           <RetroButton to='/teamSelect' state={{opponent: Array.from(map.keys())[index]}} disabled={levels.includes(Array.from(map.keys())[index]) ? false : true}>
             {levels.includes(Array.from(map.keys())[index]) ? 'Start' : 'Not Unlocked'}
           </RetroButton>
-        </div>
+        </Carousel.Item>
+      ))}
     </Carousel>
   );
 }
