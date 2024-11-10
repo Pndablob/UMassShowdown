@@ -3,7 +3,7 @@ let move = {
     power: 0,
     critChance: 0,
     critMultiplier: 1,
-    healing: 50,
+    healing: 45,
     selfHarm: 0,
 }
 

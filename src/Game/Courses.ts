@@ -16,11 +16,11 @@ import Richards210 from "./Professors/Richards210"
 import Sheldon311 from "./Professors/Sheldon311"
 import Wilson240 from "./Professors/Wilson240"
 import Davila220 from "./Professors/Davila220"
-import Swanier0 from "./Professors/Swanier0"
+import Swanier110 from "./Professors/Swanier110"
 import Parvini110 from "./Professors/Parvini110"
 
 let map: Map<string, Course> = new Map();
-map.set("110", new Course([Parvini110, Swanier0], "CICS 110"));
+map.set("110", new Course([Parvini110, Swanier110], "CICS 110"));
 map.set("160", new Course([Davila160, Reilly160], "CICS 160"));
 map.set("210", new Course([Golin210, Liberatore210, Richards210], "CICS 210"));
 map.set("220", new Course([Minea220, Davila220, Minea220], "CS 220")); // miniboss

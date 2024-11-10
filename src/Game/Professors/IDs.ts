@@ -17,7 +17,7 @@ import Sheldon311 from "./Sheldon311"
 import Wilson240 from "./Wilson240"
 import Davila220 from "./Davila220";
 import Haas0 from "./Haas0";
-import Swanier0 from "./Swanier0";
+import Swanier110 from "./Swanier110";
 import Parvini110 from "./Parvini110";
 
 const map = new Map<number, ProfessorTemplate>();
@@ -39,7 +39,7 @@ map.set(14, Sheldon311);
 map.set(15, Wilson240);
 map.set(16, Davila220);
 map.set(17, Haas0);
-map.set(18, Swanier0);
+map.set(18, Swanier110);
 map.set(19, Parvini110);
 
 
