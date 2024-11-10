@@ -1,12 +1,11 @@
-import Battle from "./Battle";
+import Professor from "./Professor";
 
 interface Move {
     name: string;
     power: number;
     critChance?: number;
     critMultiplier?: number;
-    accuracy?: number;
-    callback?: (battle: Battle)=>void;
+    healing?: number;
 }
 
 export default Move;
