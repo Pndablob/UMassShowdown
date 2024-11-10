@@ -16,6 +16,7 @@ import Richards210 from "./Professors/Richards210"
 import Sheldon311 from "./Professors/Sheldon311"
 import Wilson240 from "./Professors/Wilson240"
 import Davila220 from "./Professors/Davila220"
+import Haas0 from "./Professors/Haas0"
 
 let map: Map<string, Course> = new Map();
 map.set("110", new Course([], "CICS 110"));

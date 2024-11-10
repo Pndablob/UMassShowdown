@@ -16,6 +16,7 @@ import Richards210 from "./Richards210"
 import Sheldon311 from "./Sheldon311"
 import Wilson240 from "./Wilson240"
 import Davila220 from "./Davila220";
+import Haas0 from "./Haas0";
 
 const map = new Map<number, ProfessorTemplate>();
 map.set(0, Anderson0);
@@ -35,6 +36,7 @@ map.set(13, Richards210);
 map.set(14, Sheldon311);
 map.set(15, Wilson240);
 map.set(16, Davila220);
+map.set(17, Haas0);
 
 
 export function getProfFromID(id: number): ProfessorTemplate {
