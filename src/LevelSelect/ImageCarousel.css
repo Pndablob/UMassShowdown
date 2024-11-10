@@ -5,6 +5,7 @@
     height: 450px;
     margin-left: 25%;
     margin-right: 25%;
+    transition: background-color 1s ease;
 }
 
 .carousel-inner {
