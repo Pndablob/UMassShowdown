@@ -5,7 +5,7 @@ import MariusExam from '../Moves/MariusExam';
 import JavaScriptJab from '../Moves/JavaScriptJab';
 
 const prof = {
-    name: "Marius Minea",
+    name: "Marius Minea (220)",
     attack: 70,
     maxHealth: 220,
     defense: 60,

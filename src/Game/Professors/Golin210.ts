@@ -4,7 +4,7 @@ import HeapHammer from '../Moves/HeapHammer';
 import SortingStrike from '../Moves/SortingStrike';
 
 const prof = {
-    name: "Mordecai Golin",
+    name: "Mordecai Golin (210)",
     attack: 60,
     maxHealth: 210,
     defense: 70,

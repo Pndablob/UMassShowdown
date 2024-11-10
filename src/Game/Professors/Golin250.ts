@@ -4,7 +4,7 @@ import Exam from '../Moves/Exam';
 import SortingStrike from '../Moves/SortingStrike';
 
 const prof = {
-    name: "Mordecai Golin",
+    name: "Mordecai Golin (250)",
     attack: 70,
     maxHealth: 250,
     defense: 80,

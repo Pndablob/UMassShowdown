@@ -23,7 +23,15 @@ class Professor {
 
     public attackOpponent(opponent: Professor, move: Move, crit: boolean) {
         // calculate damage = power * attack * critical chance (1.25 modifier 10% of the time) * random modifier (0.85 - 1.0) / defense
+        console.log("Attacking with move: " + move.name);
+        console.log("Opponent health before: " + opponent.health);
+        console.log("Opponent defense: " + opponent.defense);
+        console.log("Opponent attack: " + opponent.attack);
+        
         let damage = move.power * this.attack * (crit ? 1.25: 1) * (Math.random() * 0.15 + 0.85) / opponent.defense;
+
+        console.log("Damage: " + damage);
+
         opponent.takeDamage(damage);
     }
 

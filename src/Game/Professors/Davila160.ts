@@ -4,7 +4,7 @@ import Homework from '../Moves/Homework';
 import IntimidatingInterface from '../Moves/IntimidatingInterface';
 
 const prof = {
-    name: "Jaime Davila",
+    name: "Jaime Davila (160)",
     attack: 60,
     maxHealth: 160,
     defense: 50,

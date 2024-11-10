@@ -5,7 +5,7 @@ import MariusExam from '../Moves/MariusExam';
 import RecursiveRampage from '../Moves/RecursiveRampage';
 
 const prof = {
-    name: "Marius Minea",
+    name: "Marius Minea (311)",
     attack: 90,
     maxHealth: 311,
     defense: 60,

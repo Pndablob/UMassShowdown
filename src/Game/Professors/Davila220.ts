@@ -4,7 +4,7 @@ import JavaScriptJab from '../Moves/JavaScriptJab';
 import RecursiveRampage from '../Moves/RecursiveRampage';
 
 const prof = {
-    name: "Jaime Davila",
+    name: "Jaime Davila (220)",
     attack: 80,
     maxHealth: 220,
     defense: 70,
