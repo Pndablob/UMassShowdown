@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import {
   RouterProvider,
   createBrowserRouter,
+  createHashRouter,
 } from "react-router-dom";
 import BattleScreen from '../BattleScreen/BattleScreen';
 import LevelSelect from '../LevelSelect/LevelSelect';
@@ -19,7 +20,7 @@ export default function Root() {
   });
 
  const router = useMemo(() => {
-  return createBrowserRouter([
+  return createHashRouter([
     {
       path: "/",
       element: <LevelSelect globalState={globalState} setGlobalState={setGlobalState}/>,
