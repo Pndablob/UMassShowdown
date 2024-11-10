@@ -11,7 +11,7 @@ import ProfessorTemplate from '../Game/ProfessorTemplate';
 import Professor from '../Game/Professor';
 import BattleBox from '../BattleBox/BattleBox';
 import { ActionType } from '../Game/Action';
-import { text } from 'stream/consumers';
+import { updateGlobalStateOnWin } from '../GlobalState/GlobalState'; 
 
 enum InfoBoxMode {
   MESSAGE,
@@ -49,11 +49,15 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
   const updateScreen = () => {
     if (game.current.isGameOver() !== 0) {
-      if (game.current.isGameOver() === 1) {
+      if (game.current.isGameOver() === 1) { // the player wins
+        setGlobalState(updateGlobalStateOnWin(state.opponent, globalState));
         setOppProf(undefined);
       } else {
         setActiveProf(undefined);
       }
+
+      navigate('/');
+
     } else {
       setOppProf(game.current.getOpponentActiveProfessor().copy());
       setActiveProf(game.current.getActiveProfessor().copy());

@@ -34,23 +34,39 @@ export function updateGlobalStateOnWin(beatenCourse: string, globalState: Global
     levelsUnlocked: [],
     charactersUnlocked: structuredClone(globalState.charactersUnlocked),
   }
-  for (const courseName of Object.keys(prerequisiteMap)){
-    if (!courseName) continue;
+  for (const courseName of Array.from(prerequisiteMap.keys())){
+    if (!courseName) {
+      console.log("Invalid course name");
+      continue;
+    };
+
     let hasAll = true;
 
     let prereqs = prerequisiteMap.get(courseName);
-    if (!prereqs) continue;
+    if (!prereqs) {
+      console.log("prereqs are invalid");
+      continue;
+    }
 
     for (const prereq of prereqs) {
+      console.log("BEATEN COURSE: " + beatenCourse);
+      console.log("PREREQ: " + prereq);
       if (globalState.levelsUnlocked.includes(prereq) && prereq !== beatenCourse) {
+        console.log(`can't unlock ${courseName} because you lack ${prereq}`);
         hasAll = false;
       }
     }
 
-    if (!hasAll) continue;
+    if (!hasAll) {
+      console.log("doesn't have all");
+      continue;
+    }
 
     let course: Course|undefined = Courses.get(courseName);
-    if (!course) continue;
+    if (!course) {
+      console.log("can't find course");
+      continue;
+    }
 
     let profs: ProfessorTemplate[] = course.getProfessors();
 
