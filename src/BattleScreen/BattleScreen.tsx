@@ -10,6 +10,8 @@ import { useNavigate, Location, useLocation } from 'react-router-dom';
 import ProfessorTemplate from '../Game/ProfessorTemplate';
 import Professor from '../Game/Professor';
 import BattleBox from '../BattleBox/BattleBox';
+import { ActionType } from '../Game/Action';
+import { text } from 'stream/consumers';
 
 enum InfoBoxMode {
   MESSAGE,
@@ -47,7 +49,15 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
 
   const updateScreen = () => {
     if (game.current.isGameOver() !== 0) {
+      console.log("Game over");
+
+      if (game.current.isGameOver() === 1) {
+        setOppProf(undefined);
+      } else {
+        setActiveProf(undefined);
+      }
     } else {
+      console.log("Game not over");
       setOppProf(game.current.getOpponentActiveProfessor().copy());
       setActiveProf(game.current.getActiveProfessor().copy());
     }
@@ -68,13 +78,12 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
   }
 
   const makeMove = (move: number) => {
-    let hasMovesLeftTemp = game.current.processAction({isPlayer: true, isSwitch: false, moveIndex: move});
+    let hasMovesLeftTemp = game.current.processAction({isPlayer: true, type: ActionType.ATTACK, moveIndex: move});
     update(hasMovesLeftTemp);
   }
 
   useEffect(()=>{
     dialogue.current.addText(`${state.opponent} has begun! Press ENTER to continue.`);
-    dialogue.current.addText(`Press ENTER to continue.`);
 
     let isTextRemaining = dialogue.current.getText(setDialogueText);
     setTextRemaining(isTextRemaining);

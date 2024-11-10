@@ -5,20 +5,20 @@ import Professor from "./Professor";
 import ProfessorTemplate from './ProfessorTemplate';
 import Action from "./Action";
 import Course from "./Course";
+import { ActionType } from "./Action";
 
 class Battle {
     private dialogue: Dialogue;
     private course: Course | undefined;
     private player: Player;
     private opponent: Player;
-    private actionStack: Action[] = [];
+    public actionStack: Action[] = [];
     private playerActiveProfessorIndex: number = 0;
     private opponentActiveProfessorIndex: number = 0;
-    private gameOver: number = 0; // 0 if game is still ongoing, 1 if player wins, -1 if opponent wins
 
     constructor(dialogue: Dialogue, playerTeam: ProfessorTemplate[], courseID: string) {
         this.dialogue = dialogue;
-        
+
         this.course = Courses.get(courseID);
         if (!this.course) { // catch nonexistent courses
             throw new Error(`Course with ID ${courseID} not found`);
@@ -76,7 +76,7 @@ class Battle {
         // add opponent action to queue
         this.actionStack.push({
             isPlayer: false,
-            isSwitch: false,
+            type: ActionType.ATTACK,
             moveIndex: this.getRandomNumber(0, this.opponent.getProfessors()[0].getMoves().length - 1)
         });
 
@@ -87,96 +87,88 @@ class Battle {
     }
 
     public gameLoop(): boolean {
-        // check if there's any actions left
-        // if there's actions left, update state of battle
-        // return true if there's actions left
+        /*
+        updates the state of the battle based on the top action in the actionStack
 
-        if (this.actionStack.length > 0 && !this.gameOver) {
+        returns whether there are actions left in the actionStack
+        */
+        
+        if (this.actionStack.length > 0) {
             let action = this.actionStack.pop();
 
-            if (action && action.isSwitch) {
-                // process player switch action
+            if (action && action.type === ActionType.ATTACK) {
                 if (action.isPlayer) {
-                    this.playerActiveProfessorIndex += 1;
+                    let playerActiveProfessor = this.player.getProfessors()[this.playerActiveProfessorIndex];
+                    let opponentActiveProfessor = this.opponent.getProfessors()[this.opponentActiveProfessorIndex];
+                    let move = playerActiveProfessor.getMoves()[action.moveIndex];
+                    let crit = Math.random() < 0.1; // 10% chance of critical hit
+                    playerActiveProfessor.attackOpponent(opponentActiveProfessor, move, crit);
 
-                    if (!this.isGameOver()) {
-                        this.dialogue.addText(`You send out ${this.getActiveProfessor().getName()}`);
+                    this.dialogue.addText(`${playerActiveProfessor.getName()} used ${move.name}!`);
+                    if (crit) {
+                        this.dialogue.addText("It's a critical hit!");
                     }
-                } else {
-                    this.opponentActiveProfessorIndex += 1;
 
-                    if (!this.isGameOver()) {
-                        this.dialogue.addText(`Opponent switched to ${this.getOpponentActiveProfessor().getName()}`);
+                    // if opponent professor is defeated
+                    if (opponentActiveProfessor.getHealth() <= 0) {
+                        this.dialogue.addText(`${opponentActiveProfessor.getName()} has fainted!`);
+                        this.actionStack.pop(); // remove opponent's previous active prof action from actionStack
+                        this.opponentActiveProfessorIndex++;
+
+                        // if there are more opponent professors
+                        if (!this.isGameOver()) {
+                            this.actionStack.push({
+                                isPlayer: false,
+                                type: ActionType.SWITCH,
+                                moveIndex: -1,
+                            });
+                        }
+                    }
+                } else if (!action.isPlayer) {
+                    let opponentActiveProfessor = this.opponent.getProfessors()[this.opponentActiveProfessorIndex];
+                    let playerActiveProfessor = this.player.getProfessors()[this.playerActiveProfessorIndex];
+                    let move = opponentActiveProfessor.getMoves()[action.moveIndex];
+                    let crit = Math.random() < 0.1; // 10% chance of critical hit
+                    opponentActiveProfessor.attackOpponent(playerActiveProfessor, move, crit);
+
+                    this.dialogue.addText(`${opponentActiveProfessor.getName()} used ${move.name}!`);
+                    if (crit) {
+                        this.dialogue.addText("It's a critical hit!");
+                    }
+
+                    // if player professor is defeated
+                    if (playerActiveProfessor.getHealth() <= 0) {
+                        this.dialogue.addText(`${playerActiveProfessor.getName()} has fainted!`);
+                        this.actionStack.pop(); // remove player's previous active prof action from actionStack
+                        this.playerActiveProfessorIndex++;
+
+                        // if there are more player professors
+                        if (!this.isGameOver()) {
+                            this.actionStack.push({
+                                isPlayer: true,
+                                type: ActionType.SWITCH,
+                                moveIndex: -1,
+                            });
+                        }
                     }
                 }
-            } else if (action && action.isPlayer) {
-                // process player action ==> attack opponent active professor
-                let playerActiveProfessor = this.player.getProfessors()[this.playerActiveProfessorIndex];
-                let opponentActiveProfessor = this.opponent.getProfessors()[this.opponentActiveProfessorIndex];
-                let move = playerActiveProfessor.getMoves()[action.moveIndex];
-                let crit = Math.random() < 0.1; // 10% chance of critical hit
-                playerActiveProfessor.attackOpponent(opponentActiveProfessor, move, crit);
-
-                this.dialogue.addText(`${playerActiveProfessor.getName()} used ${move.name}!`);
-
-                if (crit) {
-                    this.dialogue.addText("It's a critical hit!");
+            } else if (action && action.type === ActionType.SWITCH) {
+                if (action.isPlayer) {
+                    this.dialogue.addText(`You send out ${this.getActiveProfessor().getName()}`);
+                } else if (!action.isPlayer) {
+                    this.dialogue.addText(`Opponent switched to ${this.getOpponentActiveProfessor().getName()}`);  
                 }
-
-                // check if opponent professor is defeated and switch to next professor
-                if (opponentActiveProfessor.getHealth() <= 0) {
-                    // remove defeated professor action from stack
-                    this.actionStack.pop();
-
-                    this.actionStack.push({
-                        isPlayer: false,
-                        isSwitch: true,
-                        moveIndex: -1
-                    });
-
-                    this.dialogue.addText(`${opponentActiveProfessor.getName()} fainted!`);
+            } else if (action && action.type === ActionType.GAMEOVER) {
+                if (this.isGameOver() === 1) {
+                    this.dialogue.addText(`You've failed ${this.course?.getCourseNumber()} and were expelled from CICS! Try Isenberg instead!`);
+                } else if (this.isGameOver() === -1) {
+                    this.dialogue.addText(`You've passed ${this.course?.getCourseNumber()}!`);
                 }
-            } else if (action) {
-                // process opponent action ==> attack player active professor
-                let opponentActiveProfessor = this.opponent.getProfessors()[this.opponentActiveProfessorIndex];
-                let playerActiveProfessor = this.player.getProfessors()[this.playerActiveProfessorIndex];
-                let move = opponentActiveProfessor.getMoves()[action.moveIndex];
-                let crit = Math.random() < 0.1; // 10% chance of critical hit
-                opponentActiveProfessor.attackOpponent(playerActiveProfessor, move, crit);
-
-                this.dialogue.addText(`${opponentActiveProfessor.getName()} used ${move.name}!`);
-
-                if (crit) {
-                    this.dialogue.addText("It's a critical hit!");
-                }
-
-                // check if player professor is defeated and switch to next professor
-                if (playerActiveProfessor.getHealth() <= 0) {
-                    // remove defeated professor action from stack
-                    this.actionStack.pop()
-
-                    this.actionStack.push({
-                        isPlayer: true,
-                        isSwitch: true,
-                        moveIndex: -1
-                    });
-
-                    this.dialogue.addText(`${playerActiveProfessor.getName()} fainted!`);
-                }
-
-                
             }
+
         }
 
-        this.gameOver = this.isGameOver();
-
-        // return whether there are actions left regardless of game over
         return this.actionStack.length > 0;
-
-        // UI should check for:
-        // - game over
-        // - dialogue
-        // - state of active professors (player and opponent)
     }
 
     isGameOver(): number {
@@ -186,10 +178,8 @@ class Battle {
         // return -1 if opponent wins ==> player has no professors left
 
         if (this.playerActiveProfessorIndex >= this.player.getProfessors().length) {
-            this.dialogue.addText(`You've failed ${this.course?.getCourseNumber()} and were expelled from CICS! Try Isenberg instead!`);
             return -1;
         } else if (this.opponentActiveProfessorIndex >= this.opponent.getProfessors().length) {
-            this.dialogue.addText(`You've passed ${this.course?.getCourseNumber()}!`);
             return 1;
         }
 

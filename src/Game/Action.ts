@@ -1,6 +1,12 @@
+export enum ActionType {
+    ATTACK,
+    SWITCH,
+    GAMEOVER
+}
+
 interface Action {
     isPlayer: boolean; // player or opponent
-    isSwitch: boolean; // switch or attack
+    type: ActionType;
     moveIndex: number;
 }
 
