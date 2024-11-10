@@ -41,14 +41,14 @@ export function updateGlobalStateOnWin(beatenCourse: string, globalState: Global
     charactersUnlocked: structuredClone(globalState.charactersUnlocked),
     levelsBeaten: structuredClone(globalState.levelsBeaten),
   }
+
+  // add new beaten level
   newState.levelsBeaten.push(beatenCourse);
   newState.levelsBeaten = Array.from(new Set(newState.levelsBeaten));
-  console.log("newState.levelsBeaten", newState.levelsBeaten);
 
+  
   for (const courseName of Array.from(prerequisiteMap.keys())){
-    console.log(`Looking at ${courseName}`);
     if (!courseName) {
-      console.log("Invalid course name");
       continue;
     };
 
@@ -56,57 +56,34 @@ export function updateGlobalStateOnWin(beatenCourse: string, globalState: Global
 
     let prereqs = prerequisiteMap.get(courseName);
     if (!prereqs) {
-      console.log("prereqs are invalid");
       continue;
     }
 
     for (const prereq of prereqs) {
-      console.log(`Checking ${prereq}`);
-      console.log(`BEATEN COURSE: ${beatenCourse}`);
-      console.log("GlobalState", globalState);
-      if (!globalState.levelsUnlocked.includes(prereq) && prereq !== beatenCourse) {
-        console.log(`can't unlock ${courseName} because you lack ${prereq}`);
+      if (!globalState.levelsBeaten.includes(prereq) && prereq !== beatenCourse) {
         hasAll = false;
       }
     }
 
     if (!hasAll) {
-      console.log("doesn't have all");
       continue;
     }
-
-    let course: Course|undefined = Courses.get(courseName);
-    if (!course) {
-      console.log("can't find course");
-      continue;
-    }
-
 
     newState.levelsUnlocked.push(courseName);
   }
-  console.log("--------------");
-  console.log("--------------");
-  console.log("--------------");
-  console.log("--------------");
-  console.log("--------------");
-  console.log("--------------");
-  console.log("--------------");
 
   let set: Set<ProfessorTemplate> = new Set([Anderson0, Haas0]);
   for (let i = 0; i < newState.levelsBeaten.length; ++i) {
     let course: Course|undefined = Courses.get(newState.levelsBeaten[i]);
     if (!course) {
-      console.log("can't find course");
       continue;
     }
-    console.log(`you have course ${newState.levelsBeaten[i]} so getting professors`);
     let profs = course.getProfessors();
-    console.log(profs, newState.levelsBeaten[i]);
     for (let j = 0; j < profs.length; ++j) {
-      console.log(`Add ${profs[j].name}`);
       set.add(profs[j]);
     }
   }
+
   newState.charactersUnlocked = Array.from(set);
 
   return newState;
