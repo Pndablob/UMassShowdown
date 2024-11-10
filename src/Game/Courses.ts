@@ -24,8 +24,8 @@ map.set("110", new Course([Parvini110, Swanier0], "CICS 110"));
 map.set("160", new Course([Davila160, Reilly160], "CICS 160"));
 map.set("210", new Course([Golin210, Liberatore210, Richards210], "CICS 210"));
 map.set("220", new Course([Minea220, Davila220, Minea220], "CS 220")); // miniboss
-map.set("240", new Course([Lan240, Wilson240, Lan240, Wilson240], "CS 240"));
 map.set("230", new Course([Chiu230, Bovornkeeratiroj230, Chiu230], "CS 230"));
+map.set("240", new Course([Lan240, Wilson240, Lan240, Wilson240], "CS 240"));
 map.set("250", new Course([Barrington250, Golin250], "CS 250")); // miniboss
 map.set("311", new Course([Minea311, Parvini311, Sheldon311], "CS 311")); // final boss
 
