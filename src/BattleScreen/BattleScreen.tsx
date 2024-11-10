@@ -119,9 +119,8 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
   return (
     <div className={styles['container']}>
       <div className={styles['battle-container']}>
-        <div className={styles['left-professor']}>
-          {activeProf!==undefined ? <ProfessorElement professor={activeProf}/> : ""}
-          <div className={styles['player-info-left']}>
+        <div className={styles['professor']}>
+          <div className={styles['player-info-right']}>
             { game.current.getPlayerProfessors().map((prof: Professor)=>{
               return <div key={prof.getName()} className={styles['small-image-container']}>
                 <img 
@@ -133,8 +132,9 @@ function BattleScreen({globalState, setGlobalState}: BattleScreenArgs) {
               </div>
             })}
           </div>
+          {activeProf!==undefined ? <ProfessorElement professor={activeProf}/> : ""}
         </div>
-        <div className={styles['right-professor']}>
+        <div className={styles['professor']}>
           <div className={styles['player-info-right']}>
             { game.current.getOpponentProfessors().map((prof: Professor)=>{
               return <div key={prof.getName()} className={styles['small-image-container']}>

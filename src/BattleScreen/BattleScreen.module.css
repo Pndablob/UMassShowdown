@@ -22,15 +22,8 @@
   text-align: start;
 }
 
-.left-professor {
-  width: 55%;
-  height: 100%;
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.right-professor {
-  width: 45%;
+.professor {
+  width: 50%;
   height: 100%;
   border-width:5px;
   margin: 10px;
@@ -68,21 +61,6 @@
   font-size: 1.3rem;
 }
 
-.player-info-left {
-  border-color:black;
-  border-width: 5px;
-  border-style: solid;
-  width: 500px;
-  height: 100px;
-  margin: 0 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  background-color:white;
-}
-
 .player-info-right {
   border-color:black;
   border-width: 5px;
@@ -91,7 +69,7 @@
   height: 100px;
   margin: 0 2rem;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
   padding: 10px;
