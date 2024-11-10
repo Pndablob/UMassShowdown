@@ -27,4 +27,16 @@ map.set("230", new Course([Chiu230, Bovornkeeratiroj230, Chiu230], "CS 230"));
 map.set("250", new Course([Barrington250, Golin250], "CS 250")); // miniboss
 map.set("311", new Course([Minea311, Parvini311, Sheldon311], "CS 311")); // final boss
 
+
+let prerequisiteMap: Map<string, string[]> = new Map();
+prerequisiteMap.set("110", []);
+prerequisiteMap.set("160", ["110"]);
+prerequisiteMap.set("210", ["160"]);
+prerequisiteMap.set("220", ["210"]);
+prerequisiteMap.set("240", ["160"]);
+prerequisiteMap.set("230", ["210"]);
+prerequisiteMap.set("250", ["160"]);
+prerequisiteMap.set("311", ["250"]);
+export {prerequisiteMap};
+
 export default map;
