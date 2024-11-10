@@ -35,6 +35,7 @@ export function updateGlobalStateOnWin(beatenCourse: string, globalState: Global
     charactersUnlocked: structuredClone(globalState.charactersUnlocked),
   }
   for (const courseName of Array.from(prerequisiteMap.keys())){
+    console.log(`Looking at ${courseName}`);
     if (!courseName) {
       console.log("Invalid course name");
       continue;
@@ -49,9 +50,10 @@ export function updateGlobalStateOnWin(beatenCourse: string, globalState: Global
     }
 
     for (const prereq of prereqs) {
-      console.log("BEATEN COURSE: " + beatenCourse);
-      console.log("PREREQ: " + prereq);
-      if (globalState.levelsUnlocked.includes(prereq) && prereq !== beatenCourse) {
+      console.log(`Checking ${prereq}`);
+      console.log(`BEATEN COURSE: ${beatenCourse}`);
+      console.log("GlobalState", globalState);
+      if (!globalState.levelsUnlocked.includes(prereq) && prereq !== beatenCourse) {
         console.log(`can't unlock ${courseName} because you lack ${prereq}`);
         hasAll = false;
       }
